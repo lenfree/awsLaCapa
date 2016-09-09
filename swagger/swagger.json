@@ -49,16 +49,7 @@
     },
     "definitions": {
         "Bucket": {
-            "title": "Bucket",
-            "type": "object",
-            "properties": {
-                "bucket_creation_date": {
-                    "$ref": "#/definitions/\u0026{time Time}"
-                },
-                "bucket_name": {
-                    "type": "string"
-                }
-            }
+            "type": "object"
         }
     },
     "tags": [

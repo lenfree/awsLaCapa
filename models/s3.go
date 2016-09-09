@@ -1,24 +1,15 @@
 package models
 
 import (
-        "encoding/json"
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/lenfree/awsRestWrapper/connect"
         "github.com/aws/aws-sdk-go/aws"
         "github.com/aws/aws-sdk-go/service/s3"
         "github.com/aws/aws-sdk-go/aws/awserr"
-        "github.com/aws/aws-sdk-go/aws/awsutil"
-        "time"
-        "strings"
         "github.com/astaxie/beego"
 )
 
-type Bucket struct {
-        Name         string     `json:"bucket_name"`
-        CreationDate *time.Time `json:"bucket_creation_date"`
-}
-
-func S3List() ([]Bucket, error){
+func S3List() (*s3.ListBucketsOutput, error){
         // TODO: Make region be smart and dynamic
         svc := s3.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
         resp, err := connect.S3connect(svc)
@@ -33,25 +24,5 @@ func S3List() ([]Bucket, error){
           }
           return nil, err
         }
-        buckets := s3Buckets(resp)
-        for _, bucket := range buckets {
-                data, _ := json.Marshal(Bucket{
-                        CreationDate: bucket.CreationDate,
-                        Name: bucket.Name,
-                })
-                beego.Info(string(data))
-        }
-        return buckets, nil
-}
-
-func s3Buckets(resp *s3.ListBucketsOutput) ([]Bucket) {
-        var buckets []Bucket
-        for _, bucket := range resp.Buckets {
-          bucket := Bucket{
-            Name: strings.Replace(awsutil.StringValue(bucket.Name), "\"", "", -1),
-            CreationDate: bucket.CreationDate,
-          }
-          buckets = append(buckets, bucket)
-        }
-        return buckets
+        return resp, nil
 }
