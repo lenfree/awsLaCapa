@@ -2,6 +2,7 @@ package models
 
 import (
         "encoding/json"
+        "github.com/aws/aws-sdk-go/aws/session"
         "github.com/lenfree/awsRestWrapper/connect"
         "github.com/aws/aws-sdk-go/aws"
         "github.com/aws/aws-sdk-go/service/s3"
@@ -19,7 +20,7 @@ type Bucket struct {
 
 func S3List() ([]Bucket, error){
         // TODO: Make region be smart and dynamic
-        svc := s3.New(&aws.Config{Region: "ap-southeast-2"})
+        svc := s3.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
         resp, err := connect.S3connect(svc)
         if err != nil {
           if awsErr, ok := err.(awserr.Error); ok {

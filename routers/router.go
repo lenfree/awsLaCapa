@@ -20,6 +20,11 @@ func init() {
                                 &controllers.S3Controller{},
                         ),
                 ),
+                beego.NSNamespace("/iam",
+                        beego.NSInclude(
+                                &controllers.IAMController{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

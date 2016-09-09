@@ -14,6 +14,22 @@
     },
     "basePath": "/v1",
     "paths": {
+        "/iam/": {
+            "get": {
+                "tags": [
+                    "iam"
+                ],
+                "description": "get all S3 Buckets",
+                "operationId": "IAMController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Bucket"
+                        }
+                    }
+                }
+            }
+        },
         "/s3/": {
             "get": {
                 "tags": [
