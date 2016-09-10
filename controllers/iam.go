@@ -10,8 +10,8 @@ type IAMController struct {
 }
 
 // @Title GetAll
-// @Description get all S3 Buckets
-// @Success 200 {object} models.Bucket
+// @Description Return all IAM users
+// @Success 200 {object} models.IAMUsers
 // @router / [get]
 func (c *IAMController) GetAll() {
     IAMUsers, err := models.IAMUserList()

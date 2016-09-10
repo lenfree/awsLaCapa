@@ -20,4 +20,11 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:VPCController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:VPCController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 }

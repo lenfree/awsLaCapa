@@ -1,42 +1,47 @@
 package models
 
 import (
-        "fmt"
         "github.com/astaxie/beego"
         "github.com/aws/aws-sdk-go/aws"
         "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/aws/aws-sdk-go/service/iam"
         "github.com/lenfree/awsRestWrapper/connect"
-        "time"
 )
 
+/* This is a hack.
+At the moment, I couldn't figure out a way to use type alias to generate
+object model. Hence, use a model to describe iam.ListUsersOutput and
+not being used anywhere else except for Swagger API documentation.
+*/
 type IAMUser struct {
-        Arn                     *string `json:"arn"`
-        CreateDate              *time.Time `"json:creation_date" "timestampFormat:"iso8601"`
-        PasswordLastUsed        *time.Time `"json:password_last_used" "timestampFormat:"iso8601"`
-        Path                    *string `json:"path"`
-        UserId                  *string `json:"user_id"`
-        UserName                *string `json:"user_name"`
-        UserPolicyList          []*iam.PolicyDetail `json:"user_policy_list"`
-        AttachedManagedPolicies []*iam.AttachedPolicy `json:"attached_managed_policies"`
+        Arn              string `json:"Arn"`
+        CreateDate       string `json:"CreateDate"`
+        PasswordLastUsed string `json:"PasswordLastUsed"`
+        Path             string `json:"Path"`
+        UserID           string `json:"UserId"`
+        UserName         string `json:"UserName"`
+}
+
+type IAMUsers struct {
+        Users       []IAMUser   `json:"iam_users"`
+        IsTruncated bool        `json:"IsTruncated"`
+        Marker      interface{} `json:"Marker"`
 }
 
 func IAMUserList() (*iam.ListUsersOutput, error) {
         svc := iam.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
         resp, err := connect.IAMconnect(svc)
         if err != nil {
-          if awsErr, ok := err.(awserr.Error); ok {
-           beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-           if reqErr, ok := err.(awserr.RequestFailure); ok {
-               beego.Error(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-            }
-          } else {
-              beego.Debug(err.Error())
-          }
-          return nil, err
+                if awsErr, ok := err.(awserr.Error); ok {
+                        beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
+                        if reqErr, ok := err.(awserr.RequestFailure); ok {
+                                beego.Error(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
+                        }
+                } else {
+                        beego.Debug(err.Error())
+                }
+        return nil, err
         }
-
-       fmt.Println(resp)
-       return resp, nil
+        return resp, nil
 }

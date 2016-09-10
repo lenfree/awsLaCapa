@@ -25,6 +25,11 @@ func init() {
                                 &controllers.IAMController{},
                         ),
                 ),
+                beego.NSNamespace("/vpc",
+                        beego.NSInclude(
+                                &controllers.VPCController{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

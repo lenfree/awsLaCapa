@@ -5,21 +5,20 @@ import (
     "github.com/lenfree/awsRestWrapper/models"
 )
 
-// Category Object
-type S3Controller struct {
+type VPCController struct {
     beego.Controller
 }
 
 // @Title GetAll
-// @Description Return all S3 Buckets
-// @Success 200 {object} models.Buckets
+// @Description Return all VPCs
+// @Success 200 {object} models.ResponseModel
 // @router / [get]
-func (c *S3Controller) GetAll() {
-    buckets, err := models.S3List()
+func (c *VPCController) GetAll() {
+    VPCs, err := models.VPCList()
     if err != nil {
         c.Data["json"] = err.Error()
     } else {
-        c.Data["json"] = buckets
+        c.Data["json"] = VPCs
     }
     c.ServeJSON()
 }

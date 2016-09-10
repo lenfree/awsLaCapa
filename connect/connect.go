@@ -38,3 +38,12 @@ func IAMconnect(svc *iam.IAM) (*iam.ListUsersOutput, error) {
   return resp, nil
 }
 
+func VPCconnect(svc *ec2.EC2) (*ec2.DescribeVpcsOutput, error) {
+  beego.Info("%s", connectString)
+  var params *ec2.DescribeVpcsInput
+  resp, err := svc.DescribeVpcs(params)
+  if err != nil {
+    return nil, err
+  }
+  return resp, nil
+}

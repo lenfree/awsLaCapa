@@ -19,12 +19,12 @@
                 "tags": [
                     "iam"
                 ],
-                "description": "get all S3 Buckets",
+                "description": "Return all IAM users",
                 "operationId": "IAMController.GetAll",
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Bucket"
+                            "$ref": "#/definitions/IAMUsers"
                         }
                     }
                 }
@@ -35,12 +35,28 @@
                 "tags": [
                     "s3"
                 ],
-                "description": "get all S3 Buckets",
+                "description": "Return all S3 Buckets",
                 "operationId": "S3Controller.GetAll",
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Bucket"
+                            "$ref": "#/definitions/Buckets"
+                        }
+                    }
+                }
+            }
+        },
+        "/vpc/": {
+            "get": {
+                "tags": [
+                    "vpc"
+                ],
+                "description": "Return all VPCs",
+                "operationId": "VPCController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseModel"
                         }
                     }
                 }
@@ -49,7 +65,94 @@
     },
     "definitions": {
         "Bucket": {
-            "type": "object"
+            "title": "Bucket",
+            "type": "object",
+            "properties": {
+                "CreationDate": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Buckets": {
+            "title": "Buckets",
+            "type": "object",
+            "properties": {
+                "buckets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bucket"
+                    }
+                },
+                "owner": {
+                    "$ref": "#/definitions/Owner"
+                }
+            }
+        },
+        "IAMUser": {
+            "title": "IAMUser",
+            "type": "object",
+            "properties": {
+                "Arn": {
+                    "type": "string"
+                },
+                "CreateDate": {
+                    "type": "string"
+                },
+                "PasswordLastUsed": {
+                    "type": "string"
+                },
+                "Path": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "string"
+                },
+                "UserName": {
+                    "type": "string"
+                }
+            }
+        },
+        "IAMUsers": {
+            "title": "IAMUsers",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "Marker": {
+                    "$ref": "#/definitions/\u0026{1001 0xc820151bc0 false}"
+                },
+                "iam_users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IAMUser"
+                    }
+                }
+            }
+        },
+        "Owner": {
+            "title": "Owner",
+            "type": "object",
+            "properties": {
+                "DisplayName": {
+                    "type": "string"
+                },
+                "ID": {
+                    "type": "string"
+                }
+            }
+        },
+        "ResponseModel": {
+            "title": "ResponseModel",
+            "type": "object",
+            "properties": {
+                "vpc": {
+                    "$ref": "#/definitions/\u0026{ec2 DescribeVpcsOutput}"
+                }
+            }
         }
     },
     "tags": [
