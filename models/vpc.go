@@ -13,10 +13,21 @@ import (
  object model. Hence, use a model to describe ec2.DescribeVpcs and not being
  used anywhere else except for Swagger API documentation
  */
-type VPC ec2.DescribeVpcsOutput
+type VPC struct {
+        CidrBlock       string `json:"CidrBlock"`
+        DhcpOptionsID   string `json:"DhcpOptionsId"`
+        InstanceTenancy string `json:"InstanceTenancy"`
+        IsDefault       bool `json:"IsDefault"`
+        State           string `json:"State"`
+        Tags []struct {
+            Key string `json:"Key"`
+            Value string `json:"Value"`
+        } `json:"Tags"`
+        VpcID string `json:"VpcId"`
+}
 
-type ResponseModel struct {
-        VPC ec2.DescribeVpcsOutput `json:"vpc"`
+type VPCs struct {
+        VPCs []VPC `json:"vpcs"`
 }
 
 func VPCList() (*ec2.DescribeVpcsOutput, error){

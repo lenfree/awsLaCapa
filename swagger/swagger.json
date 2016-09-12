@@ -56,7 +56,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/ResponseModel"
+                            "$ref": "#/definitions/VPCs"
                         }
                     }
                 }
@@ -145,12 +145,45 @@
                 }
             }
         },
-        "ResponseModel": {
-            "title": "ResponseModel",
+        "VPC": {
+            "title": "VPC",
             "type": "object",
             "properties": {
-                "vpc": {
-                    "$ref": "#/definitions/\u0026{ec2 DescribeVpcsOutput}"
+                "CidrBlock": {
+                    "type": "string"
+                },
+                "DhcpOptionsId": {
+                    "type": "string"
+                },
+                "InstanceTenancy": {
+                    "type": "string"
+                },
+                "IsDefault": {
+                    "type": "boolean"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{4109 0xc8201f2330 false}"
+                    }
+                },
+                "VpcId": {
+                    "type": "string"
+                }
+            }
+        },
+        "VPCs": {
+            "title": "VPCs",
+            "type": "object",
+            "properties": {
+                "vpcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VPC"
+                    }
                 }
             }
         }

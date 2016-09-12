@@ -11,7 +11,7 @@ type VPCController struct {
 
 // @Title GetAll
 // @Description Return all VPCs
-// @Success 200 {object} models.ResponseModel
+// @Success 200 {object} models.VPCs
 // @router / [get]
 func (c *VPCController) GetAll() {
     VPCs, err := models.VPCList()
