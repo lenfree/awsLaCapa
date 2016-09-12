@@ -1,3 +1,4 @@
 *.swp
 awsRestWrapper
 lastupdate.tmp
+routers/*_*

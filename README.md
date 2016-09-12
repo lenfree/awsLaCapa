@@ -52,6 +52,11 @@ $ curl localhost:8080/v1/s3
 ]
 ```
 
+Run test:
+```
+$ go test ./...
+```
+
 Contributing:
 ```
 1. Fork it
