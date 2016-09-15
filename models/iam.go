@@ -6,7 +6,7 @@ import (
         "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/aws/aws-sdk-go/service/iam"
-        "github.com/lenfree/awsRestWrapper/connect"
+        "github.com/lenfree/awsLaCapa/connect"
 )
 
 /* This is a hack.

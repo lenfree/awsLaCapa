@@ -8,7 +8,7 @@
 package routers
 
 import (
-        "github.com/lenfree/awsRestWrapper/controllers"
+        "github.com/lenfree/awsLaCapa/controllers"
 
         "github.com/astaxie/beego"
 )

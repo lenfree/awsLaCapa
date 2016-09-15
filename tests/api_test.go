@@ -6,7 +6,7 @@ import (
         "testing"
         "runtime"
         "path/filepath"
-        _ "github.com/lenfree/awsRestWrapper/routers"
+        _ "github.com/lenfree/awsLaCapa/routers"
 
         "github.com/astaxie/beego"
         . "github.com/smartystreets/goconvey/convey"

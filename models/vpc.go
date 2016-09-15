@@ -3,7 +3,7 @@ package models
 import (
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/aws/aws-sdk-go/service/ec2"
-        "github.com/lenfree/awsRestWrapper/connect"
+        "github.com/lenfree/awsLaCapa/connect"
         "github.com/aws/aws-sdk-go/aws"
         "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/astaxie/beego"

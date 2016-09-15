@@ -2,7 +2,7 @@ package controllers
 
 import (
     "github.com/astaxie/beego"
-    "github.com/lenfree/awsRestWrapper/models"
+    "github.com/lenfree/awsLaCapa/models"
 )
 
 type IAMController struct {

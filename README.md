@@ -1,10 +1,13 @@
-awsRestWrapper
-===============
+awsLaCapa
+==========
 
 As a AWS user, it takes a large amount of time to grab all AWS resources with
 logging into AWS console. Moreover, there are cli but they are use by resources
 such as get a list of s3 buckets, we run s3 command, with ec2, we use ec2. This
 serves as a quick way to get all information via API.
+
+This is just another layer on top of it and abstracts all resources and make 
+it simple.
 
 Status: Work In Progress
 

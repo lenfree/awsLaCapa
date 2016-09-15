@@ -1,7 +1,7 @@
 package main
 
 import (
-        _ "github.com/lenfree/awsRestWrapper/routers"
+        _ "github.com/lenfree/awsLaCapa/routers"
 
         "github.com/astaxie/beego"
 )
