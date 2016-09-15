@@ -59,3 +59,43 @@ func TestGetVPC(t *testing.T) {
                 })
         })
 }
+
+func TestS3ListObjects(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/s3/mybucket", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestS3ListObjects", "Code[%d]\n%s", w.Code, w.Body.String())
+        
+        Convey("Subject: Test Station Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestS3GetObjectByKey(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/s3/mybucket/directory/key", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestS3GetObjectByKey", "Code[%d]\n%s", w.Code, w.Body.String())
+        
+        Convey("Subject: Test Station Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+
+        r, _ = http.NewRequest("GET", "/v1/s3/mybucket/key", nil)
+        w = httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestS3GetObjectByKeyNotFound", "Code[%d]\n%s", w.Code, w.Body.String())
+        
+        Convey("Subject: Test Station Endpoint Without Directory Path Or Prefix\n", t, func() {
+                Convey("Status Code Should Be 404", func() {
+                        So(w.Code, ShouldEqual, 404)
+                })
+        })
+}

@@ -46,6 +46,30 @@
                 }
             }
         },
+        "/s3/{bucket}": {
+            "get": {
+                "tags": [
+                    "s3"
+                ],
+                "description": "Return S3 Bucket Object",
+                "operationId": "S3Controller.GetByBucketName",
+                "responses": {
+                    "200": {}
+                }
+            }
+        },
+        "/s3/{bucket}/{directory}/{objkey}": {
+            "get": {
+                "tags": [
+                    "s3"
+                ],
+                "description": "Return S3 Bucket Object",
+                "operationId": "S3Controller.GetByObjectKey",
+                "responses": {
+                    "200": {}
+                }
+            }
+        },
         "/vpc/": {
             "get": {
                 "tags": [
@@ -123,7 +147,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{1001 0xc8201c3a70 false}"
+                    "$ref": "#/definitions/\u0026{1001 0xc82017a210 false}"
                 },
                 "iam_users": {
                     "type": "array",
@@ -167,7 +191,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{4109 0xc8201c3050 false}"
+                        "$ref": "#/definitions/\u0026{5498 0xc820209920 false}"
                     }
                 },
                 "VpcId": {

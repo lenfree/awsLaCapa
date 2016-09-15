@@ -23,3 +23,35 @@ func (c *S3Controller) GetAll() {
     }
     c.ServeJSON()
 }
+
+// @Title GetByBucketName
+// @Description Return S3 Bucket Directories/Prefix
+// @Success 200
+// @router /:bucket [get]
+func (c *S3Controller) GetByPrefix() {
+    bucket := c.GetString(":bucket")
+    object, err := models.S3ListObjects(bucket)
+    if err != nil {
+        c.Data["json"] = err.Error()
+    } else {
+        c.Data["json"] = object
+    }
+    c.ServeJSON()
+}
+
+// @Title GetByObjectKey
+// @Description Return S3 Bucket Object
+// @Success 200
+// @router /:bucket/:directory/:objkey [get]
+func (c *S3Controller) GetObjectByKey() {
+    bucket := c.GetString(":bucket")
+    directory := c.GetString(":directory")
+    objectKey := c.GetString(":objkey")
+    object, err := models.S3GetObjectByKey(bucket, directory + "/" + objectKey)
+    if err != nil {
+        c.Data["json"] = err.Error()
+    } else {
+        c.Data["json"] = object
+    }
+    c.ServeJSON()
+}

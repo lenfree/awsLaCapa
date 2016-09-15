@@ -20,6 +20,20 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:S3Controller"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:S3Controller"],
+		beego.ControllerComments{
+			Method: "GetByPrefix",
+			Router: `/:bucket`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:S3Controller"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:S3Controller"],
+		beego.ControllerComments{
+			Method: "GetObjectByKey",
+			Router: `/:bucket/:directory/:objkey`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:VPCController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsRestWrapper/controllers:VPCController"],
 		beego.ControllerComments{
 			Method: "GetAll",
