@@ -3,3 +3,4 @@ awsLaCapa
 lastupdate.tmp
 routers/*_*
 routers/commentsRouter_controllers.go
+credentials

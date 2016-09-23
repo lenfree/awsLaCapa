@@ -11,19 +11,20 @@ it simple.
 
 Status: Work In Progress
 
-Getting started:
+### Getting started:
 ----------------
 
 Install required packages:
 ```
 $ go get github.com/beego/bee
-$ github.com/aws/aws-sdk-go/aws
-$ github.com/aws/aws-sdk-go/service/s3
-$ github.com/aws/aws-sdk-go/aws/awserr
-$ github.com/aws/aws-sdk-go/aws/awsutil
+$ go get github.com/aws/aws-sdk-go/aws
+$ go get github.com/aws/aws-sdk-go/service/s3
+$ go get github.com/aws/aws-sdk-go/aws/awserr
+$ go get github.com/aws/aws-sdk-go/aws/awsutil
+$ go get go get github.com/lenfree/awsLaCapa
 ```
 
-Start server:
+### Start server:
 ```
 $ cat>>~/.aws/credentials<<EOF
 [default]
@@ -31,18 +32,19 @@ aws_access_key_id = <ACCESS_KEY_ID>
 aws_secret_access_key = <SECRET_ACCESS_KEY>
 EOF
 
+$ cd /go/src/github.com/lenfree/awsLaCapa
 $ bee run
 ```
 
-Rest API Documentation available in below URL:
+### Rest API Documentation available in below URL:
 ```
-http://localhost:8080/swagger/#!/s3/S3Controller_GetAll
+http://localhost:8081/swagger/#!/s3/S3Controller_GetAll
 ```
 
 
-Retrieve all S3 buckets
+### Retrieve all S3 buckets
 ```
-$ curl localhost:8080/v1/s3
+$ curl localhost:8081/v1/s3
 [
   {
     "bucket_name": "mybucket-1",
@@ -55,12 +57,25 @@ $ curl localhost:8080/v1/s3
 ]
 ```
 
-Run test:
+### Run test:
 ```
 $ go test ./...
 ```
 
-Contributing:
+### Run in docker container:
+```
+$ git clone https://github.com/lenfree/awsLaCapa.git
+$ cd awsLaCapa
+$ docker build -t awsLaCapa .
+$ cat>>credentials<<EOF
+[default]
+aws_access_key_id = <ACCESS_KEY_ID>
+aws_secret_access_key = <SECRET_ACCESS_KEY>
+EOF
+$ docker run -d -p 8081:8081 -v $(pwd):/root/.aws/ awsLaCapa
+```
+
+### Contributing:
 ```
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
