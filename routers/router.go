@@ -30,6 +30,11 @@ func init() {
                                 &controllers.VPCController{},
                         ),
                 ),
+                beego.NSNamespace("/route53",
+                        beego.NSInclude(
+                                &controllers.Route53Controller{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

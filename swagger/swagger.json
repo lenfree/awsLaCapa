@@ -30,6 +30,22 @@
                 }
             }
         },
+        "/route53/": {
+            "get": {
+                "tags": [
+                    "route53"
+                ],
+                "description": "Return all Route53 Hosted Zones",
+                "operationId": "Route53Controller.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Route53HostedZones"
+                        }
+                    }
+                }
+            }
+        },
         "/s3/": {
             "get": {
                 "tags": [
@@ -147,7 +163,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{996 0xc82017c240 false}"
+                    "$ref": "#/definitions/\u0026{996 0xc820176600 false}"
                 },
                 "iam_users": {
                     "type": "array",
@@ -166,6 +182,52 @@
                 },
                 "ID": {
                     "type": "string"
+                }
+            }
+        },
+        "Route53HostedZone": {
+            "title": "Route53HostedZone",
+            "type": "object",
+            "properties": {
+                "CallerReference": {
+                    "$ref": "#/definitions/\u0026{time Time}"
+                },
+                "Config": {
+                    "$ref": "#/definitions/\u0026{2292 0xc8201c5d70 false}"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "ResourceRecordSetCount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Route53HostedZones": {
+            "title": "Route53HostedZones",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "Marker": {
+                    "$ref": "#/definitions/\u0026{2777 0xc8201af8f0 false}"
+                },
+                "MaxItems": {
+                    "type": "string"
+                },
+                "NextMarker": {
+                    "$ref": "#/definitions/\u0026{2913 0xc8201af950 false}"
+                },
+                "Route53HostedZones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Route53HostedZone"
+                    }
                 }
             }
         },
@@ -191,7 +253,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{5483 0xc820203a70 false}"
+                        "$ref": "#/definitions/\u0026{7060 0xc820260db0 false}"
                     }
                 },
                 "VpcId": {

@@ -3,7 +3,6 @@ package models
 import (
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/aws/aws-sdk-go/service/ec2"
-        "github.com/lenfree/awsLaCapa/connect"
         "github.com/aws/aws-sdk-go/aws"
         "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/astaxie/beego"
@@ -30,10 +29,15 @@ type VPCs struct {
         VPCs []VPC `json:"vpcs"`
 }
 
-func VPCList() (*ec2.DescribeVpcsOutput, error){
-        // TODO: Make region be smart and dynamic
-        svc := ec2.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
-        resp, err := connect.VPCconnect(svc)
+func VPCList() (*ec2.DescribeVpcsOutput, error) {
+        svc := ec2.New(session.New(), &aws.Config{
+                Region: aws.String("ap-southeast-2"),
+        })
+
+        params := &ec2.DescribeVpcsInput{}
+
+        resp, err := svc.DescribeVpcs(params)
+
         if err != nil {
           if awsErr, ok := err.(awserr.Error); ok {
            beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
