@@ -113,3 +113,17 @@ func TestGetRoute53(t *testing.T) {
                 })
         })
 }
+
+func TestGetRoute53RRSet(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/route53/hosted_zone_id", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetRoute53RRSet", "Code[%d]\n%s", w.Code, w.Body.String())
+        
+        Convey("Subject: Test Station Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}

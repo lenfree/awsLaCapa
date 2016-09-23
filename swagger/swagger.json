@@ -46,6 +46,22 @@
                 }
             }
         },
+        "/route53/hostedzone/{id}": {
+            "get": {
+                "tags": [
+                    "route53"
+                ],
+                "description": "Return all Route53 Hosted Zone Resource Record Set",
+                "operationId": "Route53Controller.Get",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Route53HostedZoneRRSet"
+                        }
+                    }
+                }
+            }
+        },
         "/s3/": {
             "get": {
                 "tags": [
@@ -163,7 +179,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{996 0xc820176600 false}"
+                    "$ref": "#/definitions/\u0026{996 0xc8201947b0 false}"
                 },
                 "iam_users": {
                     "type": "array",
@@ -193,7 +209,7 @@
                     "$ref": "#/definitions/\u0026{time Time}"
                 },
                 "Config": {
-                    "$ref": "#/definitions/\u0026{2292 0xc8201c5d70 false}"
+                    "$ref": "#/definitions/\u0026{2299 0xc8201f9770 false}"
                 },
                 "Id": {
                     "type": "string"
@@ -207,6 +223,33 @@
                 }
             }
         },
+        "Route53HostedZoneRRSet": {
+            "title": "Route53HostedZoneRRSet",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "MaxItems": {
+                    "type": "string"
+                },
+                "NextRecordIdentifier": {
+                    "$ref": "#/definitions/\u0026{3225 0xc8202227b0 false}"
+                },
+                "NextRecordName": {
+                    "$ref": "#/definitions/\u0026{3298 0xc820222810 false}"
+                },
+                "NextRecordType": {
+                    "$ref": "#/definitions/\u0026{3365 0xc820222870 false}"
+                },
+                "ResourceRecordSets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{3427 0xc820222c60 false}"
+                    }
+                }
+            }
+        },
         "Route53HostedZones": {
             "title": "Route53HostedZones",
             "type": "object",
@@ -215,13 +258,13 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{2777 0xc8201af8f0 false}"
+                    "$ref": "#/definitions/\u0026{2853 0xc8201e2ae0 false}"
                 },
                 "MaxItems": {
                     "type": "string"
                 },
                 "NextMarker": {
-                    "$ref": "#/definitions/\u0026{2913 0xc8201af950 false}"
+                    "$ref": "#/definitions/\u0026{2989 0xc8201e2b40 false}"
                 },
                 "Route53HostedZones": {
                     "type": "array",
@@ -253,7 +296,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{7060 0xc820260db0 false}"
+                        "$ref": "#/definitions/\u0026{8769 0xc8202ca690 false}"
                     }
                 },
                 "VpcId": {
@@ -265,7 +308,7 @@
             "title": "VPCs",
             "type": "object",
             "properties": {
-                "vpcs": {
+                "Vpcs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/VPC"

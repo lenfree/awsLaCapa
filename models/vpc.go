@@ -26,7 +26,7 @@ type VPC struct {
 }
 
 type VPCs struct {
-        VPCs []VPC `json:"vpcs"`
+        VPCs []VPC `json:"Vpcs"`
 }
 
 func VPCList() (*ec2.DescribeVpcsOutput, error) {
