@@ -179,7 +179,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{996 0xc8201947b0 false}"
+                    "$ref": "#/definitions/\u0026{996 0xc8201768d0 false}"
                 },
                 "iam_users": {
                     "type": "array",
@@ -209,7 +209,7 @@
                     "$ref": "#/definitions/\u0026{time Time}"
                 },
                 "Config": {
-                    "$ref": "#/definitions/\u0026{2299 0xc8201f9770 false}"
+                    "$ref": "#/definitions/\u0026{2299 0xc8201db890 false}"
                 },
                 "Id": {
                     "type": "string"
@@ -234,18 +234,18 @@
                     "type": "string"
                 },
                 "NextRecordIdentifier": {
-                    "$ref": "#/definitions/\u0026{3225 0xc8202227b0 false}"
+                    "$ref": "#/definitions/\u0026{3225 0xc8202068d0 false}"
                 },
                 "NextRecordName": {
-                    "$ref": "#/definitions/\u0026{3298 0xc820222810 false}"
+                    "$ref": "#/definitions/\u0026{3298 0xc820206930 false}"
                 },
                 "NextRecordType": {
-                    "$ref": "#/definitions/\u0026{3365 0xc820222870 false}"
+                    "$ref": "#/definitions/\u0026{3365 0xc820206990 false}"
                 },
                 "ResourceRecordSets": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{3427 0xc820222c60 false}"
+                        "$ref": "#/definitions/\u0026{3427 0xc820206d80 false}"
                     }
                 }
             }
@@ -258,13 +258,13 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{2853 0xc8201e2ae0 false}"
+                    "$ref": "#/definitions/\u0026{2853 0xc8201c2c00 false}"
                 },
                 "MaxItems": {
                     "type": "string"
                 },
                 "NextMarker": {
-                    "$ref": "#/definitions/\u0026{2989 0xc8201e2b40 false}"
+                    "$ref": "#/definitions/\u0026{2989 0xc8201c2c60 false}"
                 },
                 "Route53HostedZones": {
                     "type": "array",
@@ -296,7 +296,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{8769 0xc8202ca690 false}"
+                        "$ref": "#/definitions/\u0026{8769 0xc8202ac7b0 false}"
                     }
                 },
                 "VpcId": {

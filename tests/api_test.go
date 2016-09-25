@@ -115,7 +115,7 @@ func TestGetRoute53(t *testing.T) {
 }
 
 func TestGetRoute53RRSet(t *testing.T) {
-        r, _ := http.NewRequest("GET", "/v1/route53/hosted_zone_id", nil)
+        r, _ := http.NewRequest("GET", "/v1/route53/hostedzone/id-01", nil)
         w := httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
