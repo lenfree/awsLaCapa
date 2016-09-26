@@ -46,11 +46,12 @@ func IAMUserList() (*iam.ListUsersOutput, error) {
                                         reqErr.Message(),
                                         reqErr.StatusCode(),
                                         reqErr.RequestID(),
-                                )}
+                                )
+                        }
                 } else {
                         beego.Debug(err.Error())
                 }
-        return nil, err
+                return nil, err
         }
         return resp, nil
 }

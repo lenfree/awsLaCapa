@@ -16,9 +16,9 @@ type Route53Controller struct {
 func (c *Route53Controller) GetAll() {
         hostedZones, err := models.Route53HostedZoneList()
         if err != nil {
-            c.Data["json"] = err.Error()
+                c.Data["json"] = err.Error()
         } else {
-            c.Data["json"] = hostedZones
+                c.Data["json"] = hostedZones
         }
         c.ServeJSON()
 }
@@ -31,9 +31,9 @@ func (c *Route53Controller) GetHostedZoneRRSet() {
         hostedZoneID := c.GetString(":id")
         hostedZoneRRSet, err := models.Route53HostedZoneRRSetByID("/hostedzone/" + hostedZoneID)
         if err != nil {
-            c.Data["json"] = err.Error()
+                c.Data["json"] = err.Error()
         } else {
-            c.Data["json"] = hostedZoneRRSet
+                c.Data["json"] = hostedZoneRRSet
         }
         c.ServeJSON()
 }

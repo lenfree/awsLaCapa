@@ -1,11 +1,11 @@
 package models
 
 import (
-        "github.com/aws/aws-sdk-go/aws/session"
-        "github.com/aws/aws-sdk-go/aws"
-        "github.com/aws/aws-sdk-go/service/s3"
-        "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/astaxie/beego"
+        "github.com/aws/aws-sdk-go/aws"
+        "github.com/aws/aws-sdk-go/aws/awserr"
+        "github.com/aws/aws-sdk-go/aws/session"
+        "github.com/aws/aws-sdk-go/service/s3"
         "github.com/bitly/go-simplejson"
         "io/ioutil"
 )
@@ -30,7 +30,7 @@ type Buckets struct {
         Owner   Owner    `json:"owner"`
 }
 
-func S3List() (*s3.ListBucketsOutput, error){
+func S3List() (*s3.ListBucketsOutput, error) {
         // TODO: Make region be smart and dynamic
         svc := s3.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
 
@@ -50,7 +50,8 @@ func S3List() (*s3.ListBucketsOutput, error){
                                         reqErr.Message(),
                                         reqErr.StatusCode(),
                                         reqErr.RequestID(),
-                                )}
+                                )
+                        }
                 } else {
                         beego.Debug(err.Error())
                 }
@@ -59,12 +60,12 @@ func S3List() (*s3.ListBucketsOutput, error){
         return resp, nil
 }
 
-func S3GetObjectByKey(bucket string, objectKey string) (*simplejson.Json, error){
+func S3GetObjectByKey(bucket string, objectKey string) (*simplejson.Json, error) {
         svc := s3.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
         params := &s3.GetObjectInput{
-            Bucket:                     aws.String(bucket),
-            Key:                        aws.String(objectKey),
-            ResponseContentType:        aws.String("application/json"),
+                Bucket:              aws.String(bucket),
+                Key:                 aws.String(objectKey),
+                ResponseContentType: aws.String("application/json"),
         }
         resp, err := svc.GetObject(params)
         if err != nil {
@@ -85,10 +86,10 @@ func S3GetObjectByKey(bucket string, objectKey string) (*simplejson.Json, error)
         return data, nil
 }
 
-func S3ListObjects(bucket string) (*s3.ListObjectsV2Output, error){
+func S3ListObjects(bucket string) (*s3.ListObjectsV2Output, error) {
         svc := s3.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
         params := &s3.ListObjectsV2Input{
-            Bucket: aws.String(bucket),
+                Bucket: aws.String(bucket),
         }
         resp, err := svc.ListObjectsV2(params)
         if err != nil {

@@ -1,13 +1,13 @@
 package controllers
 
 import (
-    "github.com/astaxie/beego"
-    "github.com/lenfree/awsLaCapa/models"
+        "github.com/astaxie/beego"
+        "github.com/lenfree/awsLaCapa/models"
 )
 
 // Category Object
 type S3Controller struct {
-    beego.Controller
+        beego.Controller
 }
 
 // @Title GetAll
@@ -15,13 +15,13 @@ type S3Controller struct {
 // @Success 200 {object} models.Buckets
 // @router / [get]
 func (c *S3Controller) GetAll() {
-    buckets, err := models.S3List()
-    if err != nil {
-        c.Data["json"] = err.Error()
-    } else {
-        c.Data["json"] = buckets
-    }
-    c.ServeJSON()
+        buckets, err := models.S3List()
+        if err != nil {
+                c.Data["json"] = err.Error()
+        } else {
+                c.Data["json"] = buckets
+        }
+        c.ServeJSON()
 }
 
 // @Title GetByBucketName
@@ -29,14 +29,14 @@ func (c *S3Controller) GetAll() {
 // @Success 200
 // @router /:bucket [get]
 func (c *S3Controller) GetByPrefix() {
-    bucket := c.GetString(":bucket")
-    object, err := models.S3ListObjects(bucket)
-    if err != nil {
-        c.Data["json"] = err.Error()
-    } else {
-        c.Data["json"] = object
-    }
-    c.ServeJSON()
+        bucket := c.GetString(":bucket")
+        object, err := models.S3ListObjects(bucket)
+        if err != nil {
+                c.Data["json"] = err.Error()
+        } else {
+                c.Data["json"] = object
+        }
+        c.ServeJSON()
 }
 
 // @Title GetByObjectKey
@@ -44,14 +44,14 @@ func (c *S3Controller) GetByPrefix() {
 // @Success 200
 // @router /:bucket/:directory/:objkey [get]
 func (c *S3Controller) GetObjectByKey() {
-    bucket := c.GetString(":bucket")
-    directory := c.GetString(":directory")
-    objectKey := c.GetString(":objkey")
-    object, err := models.S3GetObjectByKey(bucket, directory + "/" + objectKey)
-    if err != nil {
-        c.Data["json"] = err.Error()
-    } else {
-        c.Data["json"] = object
-    }
-    c.ServeJSON()
+        bucket := c.GetString(":bucket")
+        directory := c.GetString(":directory")
+        objectKey := c.GetString(":objkey")
+        object, err := models.S3GetObjectByKey(bucket, directory+"/"+objectKey)
+        if err != nil {
+                c.Data["json"] = err.Error()
+        } else {
+                c.Data["json"] = object
+        }
+        c.ServeJSON()
 }
