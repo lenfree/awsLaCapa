@@ -14,6 +14,22 @@
     },
     "basePath": "/v1",
     "paths": {
+        "/ec2/": {
+            "get": {
+                "tags": [
+                    "ec2"
+                ],
+                "description": "Return all EC2 instances",
+                "operationId": "EC2Controller.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/EC2Reservations"
+                        }
+                    }
+                }
+            }
+        },
         "/iam/": {
             "get": {
                 "tags": [
@@ -147,6 +163,178 @@
                 }
             }
         },
+        "EC2Instance": {
+            "title": "EC2Instance",
+            "type": "object",
+            "properties": {
+                "AmiLaunchIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Architecture": {
+                    "type": "string"
+                },
+                "BlockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{671 0xc820240d20 false}"
+                    }
+                },
+                "ClientToken": {
+                    "type": "string"
+                },
+                "EbsOptimized": {
+                    "type": "boolean"
+                },
+                "EnaSupport": {
+                    "$ref": "#/definitions/\u0026{1203 0xc820240db0 false}"
+                },
+                "Hypervisor": {
+                    "type": "string"
+                },
+                "IamInstanceProfile": {
+                    "$ref": "#/definitions/\u0026{1316 0xc820240e10 false}"
+                },
+                "ImageId": {
+                    "type": "string"
+                },
+                "InstanceId": {
+                    "type": "string"
+                },
+                "InstanceLifecycle": {
+                    "$ref": "#/definitions/\u0026{1569 0xc820240e70 false}"
+                },
+                "InstanceType": {
+                    "type": "string"
+                },
+                "KernelId": {
+                    "$ref": "#/definitions/\u0026{1683 0xc820240ed0 false}"
+                },
+                "KeyName": {
+                    "type": "string"
+                },
+                "LaunchTime": {
+                    "$ref": "#/definitions/\u0026{time Time}"
+                },
+                "Monitoring": {
+                    "$ref": "#/definitions/\u0026{1833 0xc820240f30 false}"
+                },
+                "NetworkInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{1952 0xc8202411d0 false}"
+                    }
+                },
+                "Placement": {
+                    "$ref": "#/definitions/\u0026{3540 0xc820241320 false}"
+                },
+                "Platform": {
+                    "$ref": "#/definitions/\u0026{3875 0xc820241380 false}"
+                },
+                "PrivateDnsName": {
+                    "type": "string"
+                },
+                "PrivateIpAddress": {
+                    "type": "string"
+                },
+                "ProductCodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{4052 0xc8202413e0 false}"
+                    }
+                },
+                "PublicDnsName": {
+                    "type": "string"
+                },
+                "PublicIpAddress": {
+                    "$ref": "#/definitions/\u0026{4305 0xc820241470 false}"
+                },
+                "RamdiskId": {
+                    "$ref": "#/definitions/\u0026{4364 0xc8202414d0 false}"
+                },
+                "RootDeviceName": {
+                    "type": "string"
+                },
+                "RootDeviceType": {
+                    "type": "string"
+                },
+                "SecurityGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{4540 0xc820241530 false}"
+                    }
+                },
+                "SourceDestCheck": {
+                    "type": "boolean"
+                },
+                "SpotInstanceRequestId": {
+                    "$ref": "#/definitions/\u0026{4779 0xc8202415c0 false}"
+                },
+                "SriovNetSupport": {
+                    "$ref": "#/definitions/\u0026{4850 0xc820241620 false}"
+                },
+                "State": {
+                    "$ref": "#/definitions/\u0026{4905 0xc820241680 false}"
+                },
+                "StateReason": {
+                    "$ref": "#/definitions/\u0026{5048 0xc8202416e0 false}"
+                },
+                "StateTransitionReason": {
+                    "type": "string"
+                },
+                "SubnetId": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{5218 0xc820241740 false}"
+                    }
+                },
+                "VirtualizationType": {
+                    "type": "string"
+                },
+                "VpcId": {
+                    "type": "string"
+                }
+            }
+        },
+        "EC2Instances": {
+            "title": "EC2Instances",
+            "type": "object",
+            "properties": {
+                "Groups": {
+                    "$ref": "#/definitions/\u0026{5542 0xc820211890 false}"
+                },
+                "Instances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EC2Instance"
+                    }
+                },
+                "OwnerId": {
+                    "type": "string"
+                },
+                "RequesterId": {
+                    "type": "string"
+                },
+                "ReservationId": {
+                    "type": "string"
+                }
+            }
+        },
+        "EC2Reservations": {
+            "title": "EC2Reservations",
+            "type": "object",
+            "properties": {
+                "Reservations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EC2Instances"
+                    }
+                }
+            }
+        },
         "IAMUser": {
             "title": "IAMUser",
             "type": "object",
@@ -179,7 +367,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{996 0xc8201768d0 false}"
+                    "$ref": "#/definitions/\u0026{7756 0xc82028e4b0 false}"
                 },
                 "iam_users": {
                     "type": "array",
@@ -209,7 +397,7 @@
                     "$ref": "#/definitions/\u0026{time Time}"
                 },
                 "Config": {
-                    "$ref": "#/definitions/\u0026{2299 0xc8201db890 false}"
+                    "$ref": "#/definitions/\u0026{9310 0xc82031abd0 false}"
                 },
                 "Id": {
                     "type": "string"
@@ -234,18 +422,18 @@
                     "type": "string"
                 },
                 "NextRecordIdentifier": {
-                    "$ref": "#/definitions/\u0026{3225 0xc8202068d0 false}"
+                    "$ref": "#/definitions/\u0026{10236 0xc82034eea0 false}"
                 },
                 "NextRecordName": {
-                    "$ref": "#/definitions/\u0026{3298 0xc820206930 false}"
+                    "$ref": "#/definitions/\u0026{10309 0xc82034ef00 false}"
                 },
                 "NextRecordType": {
-                    "$ref": "#/definitions/\u0026{3365 0xc820206990 false}"
+                    "$ref": "#/definitions/\u0026{10376 0xc82034ef60 false}"
                 },
                 "ResourceRecordSets": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{3427 0xc820206d80 false}"
+                        "$ref": "#/definitions/\u0026{10438 0xc82034f350 false}"
                     }
                 }
             }
@@ -258,13 +446,13 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{2853 0xc8201c2c00 false}"
+                    "$ref": "#/definitions/\u0026{9864 0xc8202eec90 false}"
                 },
                 "MaxItems": {
                     "type": "string"
                 },
                 "NextMarker": {
-                    "$ref": "#/definitions/\u0026{2989 0xc8201c2c60 false}"
+                    "$ref": "#/definitions/\u0026{10000 0xc8202eecf0 false}"
                 },
                 "Route53HostedZones": {
                     "type": "array",
@@ -296,7 +484,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{8769 0xc8202ac7b0 false}"
+                        "$ref": "#/definitions/\u0026{16127 0xc8201d63f0 false}"
                     }
                 },
                 "VpcId": {

@@ -127,3 +127,17 @@ func TestGetRoute53RRSet(t *testing.T) {
                 })
         })
 }
+
+func TestGetEC2Instances(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/ec2", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetEC2Instances", "Code[%d]\n%s", w.Code, w.Body.String())
+        
+        Convey("Subject: Test Station Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}

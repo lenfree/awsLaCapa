@@ -9,7 +9,7 @@ import (
 )
 
 /* At the moment, I couldn't figure out a way to use type alias to generate
- object model. Hence, use a model to describe ec2.DescribeVpcs and not being
+ object model. Hence, use a model to describe route53.ListHostedZonesOUtput and not being
  used anywhere else except for Swagger API documentation
  */
 type Route53HostedZone struct {

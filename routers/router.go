@@ -35,6 +35,11 @@ func init() {
                                 &controllers.Route53Controller{},
                         ),
                 ),
+                beego.NSNamespace("/ec2",
+                        beego.NSInclude(
+                                &controllers.EC2Controller{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

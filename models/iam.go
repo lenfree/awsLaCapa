@@ -6,7 +6,6 @@ import (
         "github.com/aws/aws-sdk-go/aws/awserr"
         "github.com/aws/aws-sdk-go/aws/session"
         "github.com/aws/aws-sdk-go/service/iam"
-        "github.com/lenfree/awsLaCapa/connect"
 )
 
 /* This is a hack.
@@ -30,14 +29,24 @@ type IAMUsers struct {
 }
 
 func IAMUserList() (*iam.ListUsersOutput, error) {
-        svc := iam.New(session.New(), &aws.Config{Region: aws.String("ap-southeast-2")})
-        resp, err := connect.IAMconnect(svc)
+        svc := iam.New(session.New(), &aws.Config{
+                Region: aws.String("ap-southeast-2"),
+        })
+
+        params := &iam.ListUsersInput{}
+
+        resp, err := svc.ListUsers(params)
+
         if err != nil {
                 if awsErr, ok := err.(awserr.Error); ok {
                         beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
                         if reqErr, ok := err.(awserr.RequestFailure); ok {
-                                beego.Error(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-                        }
+                                beego.Error(
+                                        reqErr.Code(),
+                                        reqErr.Message(),
+                                        reqErr.StatusCode(),
+                                        reqErr.RequestID(),
+                                )}
                 } else {
                         beego.Debug(err.Error())
                 }
