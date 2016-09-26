@@ -14,14 +14,14 @@ Status: Work In Progress
 ### Getting started:
 ----------------
 
-Install required packages:
+### Install required packages:
 ```
-$ go get github.com/beego/bee
-$ go get github.com/aws/aws-sdk-go/aws
-$ go get github.com/aws/aws-sdk-go/service/s3
-$ go get github.com/aws/aws-sdk-go/aws/awserr
-$ go get github.com/aws/aws-sdk-go/aws/awsutil
-$ go get go get github.com/lenfree/awsLaCapa
+$ make install
+```
+
+### Run test:
+```
+$ make script
 ```
 
 ### Start server:
@@ -55,11 +55,6 @@ $ curl localhost:8081/v1/s3
     "bucket_creation_date": "2016-09-08T06:49:20Z"
   }
 ]
-```
-
-### Run test:
-```
-$ go test ./...
 ```
 
 ### Run in docker container:

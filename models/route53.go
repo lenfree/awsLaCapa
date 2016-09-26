@@ -24,7 +24,7 @@ type Route53HostedZone struct {
 }
 
 type Route53HostedZones struct {
-        Route53HostedZones []Route53HostedZone `json:Route53_hosted_zones`
+        Route53HostedZones []Route53HostedZone `json:"Route53_hosted_zones"`
         IsTruncated        bool                `json:"IsTruncated"`
         Marker             interface{}         `json:"Marker"`
         MaxItems           string              `json:"MaxItems"`
