@@ -25,7 +25,7 @@ func TestGetIAM(t *testing.T) {
 
         beego.Trace("testing", "TestGetIAM", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test GetIAM Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -39,7 +39,7 @@ func TestGetS3(t *testing.T) {
 
         beego.Trace("testing", "TestGetS3", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test GetS3 Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -53,7 +53,7 @@ func TestGetVPC(t *testing.T) {
 
         beego.Trace("testing", "TestGetVPC", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test VPCs Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -67,7 +67,7 @@ func TestGetVPCPeeringConnections(t *testing.T) {
 
         beego.Trace("testing", "TestGetVPCPeeringConnections", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test VPC Peering Connections Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -81,7 +81,7 @@ func TestS3ListObjects(t *testing.T) {
 
         beego.Trace("testing", "TestS3ListObjects", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test S3 Bucket Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -95,7 +95,7 @@ func TestS3GetObjectByKey(t *testing.T) {
 
         beego.Trace("testing", "TestS3GetObjectByKey", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test S3 Bucket Object Key Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -105,9 +105,9 @@ func TestS3GetObjectByKey(t *testing.T) {
         w = httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
-        beego.Trace("testing", "TestS3GetObjectByKeyNotFound", "Code[%d]\n%s", w.Code, w.Body.String())
+        beego.Trace("testing", "TestS3GetObjectByKeyNotFound", "Code[%d]\n%s", w.Code)
 
-        Convey("Subject: Test Station Endpoint Without Directory Path Or Prefix\n", t, func() {
+        Convey("Subject: Test S3 Bucket Object Key Endpoint With Incorrect Directory Path Or Prefix\n", t, func() {
                 Convey("Status Code Should Be 404", func() {
                         So(w.Code, ShouldEqual, 404)
                 })
@@ -121,7 +121,7 @@ func TestGetRoute53(t *testing.T) {
 
         beego.Trace("testing", "TestGetRoute53", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test Route53 Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -135,7 +135,7 @@ func TestGetRoute53RRSet(t *testing.T) {
 
         beego.Trace("testing", "TestGetRoute53RRSet", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test Route53 RR Set Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
@@ -149,7 +149,7 @@ func TestGetEC2Instances(t *testing.T) {
 
         beego.Trace("testing", "TestGetEC2Instances", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test Station Endpoint\n", t, func() {
+        Convey("Subject: Test EC2 Instace Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })

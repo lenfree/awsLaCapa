@@ -61,13 +61,13 @@ $ curl localhost:8081/v1/s3
 ```
 $ git clone https://github.com/lenfree/awsLaCapa.git
 $ cd awsLaCapa
-$ docker build -t awsLaCapa .
+$ make build
 $ cat>>credentials<<EOF
 [default]
 aws_access_key_id = <ACCESS_KEY_ID>
 aws_secret_access_key = <SECRET_ACCESS_KEY>
 EOF
-$ docker run -d -p 8081:8081 -v $(pwd):/root/.aws/ awsLaCapa
+$ make run PORT=8081
 ```
 
 ### Contributing:
