@@ -24,7 +24,7 @@ func TestGetIAM(t *testing.T) {
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
         beego.Trace("testing", "TestGetIAM", "Code[%d]\n%s", w.Code, w.Body.String())
-        
+
         Convey("Subject: Test Station Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
@@ -47,12 +47,26 @@ func TestGetS3(t *testing.T) {
 }
 
 func TestGetVPC(t *testing.T) {
-        r, _ := http.NewRequest("GET", "/v1/vpc", nil)
+        r, _ := http.NewRequest("GET", "/v1/vpc/vpcs", nil)
         w := httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
         beego.Trace("testing", "TestGetVPC", "Code[%d]\n%s", w.Code, w.Body.String())
-        
+
+        Convey("Subject: Test Station Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetVPCPeeringConnections(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/vpc/vpc_peering_connections", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetVPCPeeringConnections", "Code[%d]\n%s", w.Code, w.Body.String())
+
         Convey("Subject: Test Station Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
