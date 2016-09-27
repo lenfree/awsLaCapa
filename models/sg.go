@@ -13,9 +13,55 @@ At the moment, I couldn't figure out a way to use type alias to generate
 object model. Hence, use a model to describe ec2.DescribeSecurityGroups and
 not being used anywhere else except for Swagger API documentation.
 */
+type SecurityGroup struct {
+        Description string `json:"Description"`
+        GroupID string `json:"GroupId"`
+        GroupName string `json:"GroupName"`
+        SecurityGroupIPPermission []SecurityGroupIPPermission `json:"IPPermissions"`
+        SecurityGroupIPPermissionEgress []SecurityGroupIPPermissionEgress `json:"IPPermissionsEgress"`
+        OwnerID string `json:"OwnerId"`
+        Tags interface{} `json:"Tags"`
+        VpcID string `json:"VpcId"`
+}
 
+type SecurityGroupIPPermission struct {
+        FromPort interface{} `json:"FromPort"`
+        IPProtocol string `json:"IpProtocol"`
+        IPRanges interface{} `json:"IpRanges"`
+        PrefixListIds interface{} `json:"PrefixListIds"`
+        ToPort interface{} `json:"ToPort"`
+        UserIDGroupPairs []SecurityGroupUserIDGroupPairs `json:"UserIDGroupPairs"`
+}
 
-func SecurityGroups() (*ec2.DescribeSecurityGroupsOutput, error) {
+type SecurityGroupIPPermissionEgress struct {
+        FromPort interface{} `json:"FromPort"`
+        IPProtocol string `json:"IpProtocol"`
+        IPRanges []SecurityGroupIPRanges `json:"IpRanges"`
+        PrefixListIds interface{} `json:"PrefixListIds"`
+        ToPort interface{} `json:"ToPort"`
+        UserIDGroupPairs interface{} `json:"UserIdGroupPairs"`
+}
+
+type SecurityGroupIPRanges struct {
+        CidrIP string `json:"CidrIp"`
+}
+
+type SecurityGroupUserIDGroupPairs struct {
+        UserIDGroupPairs []struct {
+            GroupID string `json:"GroupId"`
+            GroupName interface{} `json:"GroupName"`
+            PeeringStatus interface{} `json:"PeeringStatus"`
+            UserID string `json:"UserId"`
+            VpcID interface{} `json:"VpcId"`
+            VpcPeeringConnectionID interface{} `json:"VpcPeeringConnectionId"`
+        } `json:"UserIdGroupPairs"`
+}
+
+type SecurityGroups struct {
+        SecurityGroups []SecurityGroup `json:"security_groups"`
+}
+
+func SecurityGroupsList() (*ec2.DescribeSecurityGroupsOutput, error) {
         svc := ec2.New(session.New(), &aws.Config{
                 Region: aws.String("ap-southeast-2"),
         })

@@ -11,10 +11,10 @@ type SecurityGroupController struct {
 
 // @Title GetAll
 // @Description Return all Security Group Set
-// @Success 200 {object} models.DHCPOptionSet
+// @Success 200 {object} models.SecurityGroups
 // @router / [get]
 func (c *SecurityGroupController) GetAll() {
-        sgs, err := models.SecurityGroups()
+        sgs, err := models.SecurityGroupsList()
         if err != nil {
                 c.Data["json"] = err.Error()
         } else {
