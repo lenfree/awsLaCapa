@@ -10,35 +10,18 @@ import (
 
 /* This is a hack.
 At the moment, I couldn't figure out a way to use type alias to generate
-object model. Hence, use a model to describe ec2.DescribeDhcpOptions and
+object model. Hence, use a model to describe ec2.DescribeSecurityGroups and
 not being used anywhere else except for Swagger API documentation.
 */
 
-type DHCPConfiguration struct {
-        Key string       `json:"Key"`
-        Values []struct {
-            Value string `json:"Value"`
-        } `json:"Values"`
-}
 
-type DHCPOption struct {
-        DhcpConfigurations []DHCPConfiguration `json:"DhcpOption"`
-}
-
-type DHCPOptionSet struct {
-        DhcpOptions []DHCPOption `json:"DhcpOptions"`
-        DhcpOptionsID string     `json:"DhcpOptionsId"`
-        Tags interface{}         `json:"Tags"`
-}
-
-func DHCPOptionsList() (*ec2.DescribeDhcpOptionsOutput, error) {
+func SecurityGroups() (*ec2.DescribeSecurityGroupsOutput, error) {
         svc := ec2.New(session.New(), &aws.Config{
                 Region: aws.String("ap-southeast-2"),
         })
 
-        params := &ec2.DescribeDhcpOptionsInput{}
-
-        resp, err := svc.DescribeDhcpOptions(params)
+        params := &ec2.DescribeSecurityGroupsInput{}
+        resp, err := svc.DescribeSecurityGroups(params)
         if err != nil {
                 if awsErr, ok := err.(awserr.Error); ok {
                         beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())

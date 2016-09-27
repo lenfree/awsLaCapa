@@ -45,6 +45,11 @@ func init() {
                                 &controllers.DHCPController{},
                         ),
                 ),
+                beego.NSNamespace("/security_groups",
+                        beego.NSInclude(
+                                &controllers.SecurityGroupController{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

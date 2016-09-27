@@ -169,3 +169,17 @@ func TestGetDHCPOptionSet(t *testing.T) {
                 })
         })
 }
+
+func TestGetSecurityGroups(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/security_groups", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetSecurityGroups", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test Security Groups Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}

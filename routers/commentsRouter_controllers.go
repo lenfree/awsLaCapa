@@ -62,6 +62,13 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:SecurityGroupController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:SecurityGroupController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:VPCController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:VPCController"],
 		beego.ControllerComments{
 			Method: "GetAll",
