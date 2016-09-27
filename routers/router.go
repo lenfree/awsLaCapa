@@ -40,6 +40,11 @@ func init() {
                                 &controllers.EC2Controller{},
                         ),
                 ),
+                beego.NSNamespace("/dhcp",
+                        beego.NSInclude(
+                                &controllers.DHCPController{},
+                        ),
+                ),
         )
         beego.AddNamespace(ns)
 }

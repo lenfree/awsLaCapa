@@ -6,6 +6,13 @@ import (
 
 func init() {
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:DHCPController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:DHCPController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:EC2Controller"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:EC2Controller"],
 		beego.ControllerComments{
 			Method: "GetAll",
@@ -58,7 +65,7 @@ func init() {
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:VPCController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:VPCController"],
 		beego.ControllerComments{
 			Method: "GetAll",
-			Router: `/vpcs`,
+			Router: `/`,
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 

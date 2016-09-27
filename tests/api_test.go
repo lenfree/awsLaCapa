@@ -47,7 +47,7 @@ func TestGetS3(t *testing.T) {
 }
 
 func TestGetVPC(t *testing.T) {
-        r, _ := http.NewRequest("GET", "/v1/vpc/vpcs", nil)
+        r, _ := http.NewRequest("GET", "/v1/vpc", nil)
         w := httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
@@ -150,6 +150,20 @@ func TestGetEC2Instances(t *testing.T) {
         beego.Trace("testing", "TestGetEC2Instances", "Code[%d]\n%s", w.Code, w.Body.String())
 
         Convey("Subject: Test EC2 Instace Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetDHCPOptionSet(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/dhcp", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetDHCPOptionSet", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test DHCP Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
