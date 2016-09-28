@@ -34,17 +34,25 @@ func IAMUserGroupList() (*IAMUserGroupOutput, error) {
         if err != nil {
                 beego.Error(err)
         }
+        resp, err := get_user_from_group(groups)
+        if err != nil {
+                return nil, err
+        }
+        return resp, nil
+}
+
+func get_user_from_group(groups *iam.ListGroupsOutput) (*IAMUserGroupOutput, error) {
         svc := iam.New(session.New(), &aws.Config{
                 Region: aws.String("ap-southeast-2"),
         })
-
-        resp_groups := new(IAMUserGroupOutput)
+        data := new(IAMUserGroupOutput)
         for _, g := range groups.Groups {
 
                 params := &iam.GetGroupInput{
                         GroupName: aws.String(*g.GroupName),
                 
                 }
+
 
                 resp, err := svc.GetGroup(params)
 
@@ -64,7 +72,7 @@ func IAMUserGroupList() (*IAMUserGroupOutput, error) {
                         }
                         return nil, err
                 }
-                resp_groups.IAMUserGroups = append(resp_groups.IAMUserGroups, resp)
+                data.IAMUserGroups = append(data.IAMUserGroups, resp)
         }
-        return resp_groups, nil
+        return data, nil
 }
