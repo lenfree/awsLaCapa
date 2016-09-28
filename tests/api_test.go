@@ -18,14 +18,28 @@ func init() {
         beego.TestBeegoInit(apppath)
 }
 
-func TestGetIAM(t *testing.T) {
-        r, _ := http.NewRequest("GET", "/v1/iam", nil)
+func TestGetIAMUsers(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/iam/users", nil)
         w := httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
-        beego.Trace("testing", "TestGetIAM", "Code[%d]\n%s", w.Code, w.Body.String())
+        beego.Trace("testing", "TestGetIAMUsers", "Code[%d]\n%s", w.Code, w.Body.String())
 
-        Convey("Subject: Test GetIAM Endpoint\n", t, func() {
+        Convey("Subject: Test GetIAMUsers Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetIAMGroups(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/iam/groups", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetIAMGroups", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test GetIAMGroups Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })

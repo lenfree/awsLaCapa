@@ -11,7 +11,7 @@ type IAMGroupsController struct {
 
 // @Title GetAll
 // @Description Return all IAM groups
-// @Success 200 [object] models.IAMGroups
+// @Success 200 {object} models.IAMGroups
 // @router /groups [get]
 func (c *IAMGroupsController) GetAllIAMGroups() {
         IAMGroups, err := models.IAMGroupList()
