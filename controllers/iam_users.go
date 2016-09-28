@@ -5,15 +5,15 @@ import (
         "github.com/lenfree/awsLaCapa/models"
 )
 
-type IAMController struct {
+type IAMUsersController struct {
         beego.Controller
 }
 
 // @Title GetAll
 // @Description Return all IAM users
 // @Success 200 {object} models.IAMUsers
-// @router / [get]
-func (c *IAMController) GetAll() {
+// @router /users [get]
+func (c *IAMUsersController) GetAll() {
         IAMUsers, err := models.IAMUserList()
         if err != nil {
                 c.Data["json"] = err.Error()
