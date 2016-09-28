@@ -62,6 +62,22 @@
                 }
             }
         },
+        "/iam/user_groups": {
+            "get": {
+                "tags": [
+                    "iam"
+                ],
+                "description": "Return all IAM users in specified IAM User Groups",
+                "operationId": "IAMUserGroupsController.GetAll User Groups",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/IAMUserGroups"
+                        }
+                    }
+                }
+            }
+        },
         "/iam/users": {
             "get": {
                 "tags": [
@@ -237,7 +253,7 @@
                 "Values": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{570 0xc8205bdd40 false}"
+                        "$ref": "#/definitions/\u0026{570 0xc8205e4240 false}"
                     }
                 }
             }
@@ -268,7 +284,7 @@
                     "type": "string"
                 },
                 "Tags": {
-                    "$ref": "#/definitions/\u0026{894 0xc82053eed0 false}"
+                    "$ref": "#/definitions/\u0026{894 0xc820554030 false}"
                 }
             }
         },
@@ -286,7 +302,7 @@
                 "BlockDeviceMappings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{2635 0xc8206b8030 false}"
+                        "$ref": "#/definitions/\u0026{2635 0xc8208a8f60 false}"
                     }
                 },
                 "ClientToken": {
@@ -296,13 +312,13 @@
                     "type": "boolean"
                 },
                 "EnaSupport": {
-                    "$ref": "#/definitions/\u0026{3251 0xc8206b80c0 false}"
+                    "$ref": "#/definitions/\u0026{3251 0xc8208a8ff0 false}"
                 },
                 "Hypervisor": {
                     "type": "string"
                 },
                 "IamInstanceProfile": {
-                    "$ref": "#/definitions/\u0026{3369 0xc8206b8120 false}"
+                    "$ref": "#/definitions/\u0026{3369 0xc8208a9050 false}"
                 },
                 "ImageId": {
                     "type": "string"
@@ -311,13 +327,13 @@
                     "type": "string"
                 },
                 "InstanceLifecycle": {
-                    "$ref": "#/definitions/\u0026{3634 0xc8206b8180 false}"
+                    "$ref": "#/definitions/\u0026{3634 0xc8208a90b0 false}"
                 },
                 "InstanceType": {
                     "type": "string"
                 },
                 "KernelId": {
-                    "$ref": "#/definitions/\u0026{3759 0xc8206b81e0 false}"
+                    "$ref": "#/definitions/\u0026{3759 0xc8208a9110 false}"
                 },
                 "KeyName": {
                     "type": "string"
@@ -326,19 +342,19 @@
                     "$ref": "#/definitions/\u0026{time Time}"
                 },
                 "Monitoring": {
-                    "$ref": "#/definitions/\u0026{3928 0xc8206b8240 false}"
+                    "$ref": "#/definitions/\u0026{3928 0xc8208a9170 false}"
                 },
                 "NetworkInterfaces": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{4039 0xc8206b84e0 false}"
+                        "$ref": "#/definitions/\u0026{4039 0xc8208a9410 false}"
                     }
                 },
                 "Placement": {
-                    "$ref": "#/definitions/\u0026{5811 0xc8206b8630 false}"
+                    "$ref": "#/definitions/\u0026{5811 0xc8208a9560 false}"
                 },
                 "Platform": {
-                    "$ref": "#/definitions/\u0026{6195 0xc8206b8690 false}"
+                    "$ref": "#/definitions/\u0026{6195 0xc8208a95c0 false}"
                 },
                 "PrivateDnsName": {
                     "type": "string"
@@ -349,17 +365,17 @@
                 "ProductCodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{6376 0xc8206b86f0 false}"
+                        "$ref": "#/definitions/\u0026{6376 0xc8208a9620 false}"
                     }
                 },
                 "PublicDnsName": {
                     "type": "string"
                 },
                 "PublicIpAddress": {
-                    "$ref": "#/definitions/\u0026{6626 0xc8206b8780 false}"
+                    "$ref": "#/definitions/\u0026{6626 0xc8208a96b0 false}"
                 },
                 "RamdiskId": {
-                    "$ref": "#/definitions/\u0026{6687 0xc8206b87e0 false}"
+                    "$ref": "#/definitions/\u0026{6687 0xc8208a9710 false}"
                 },
                 "RootDeviceName": {
                     "type": "string"
@@ -370,23 +386,23 @@
                 "SecurityGroups": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{6864 0xc8206b8840 false}"
+                        "$ref": "#/definitions/\u0026{6864 0xc8208a9770 false}"
                     }
                 },
                 "SourceDestCheck": {
                     "type": "boolean"
                 },
                 "SpotInstanceRequestId": {
-                    "$ref": "#/definitions/\u0026{7106 0xc8206b88d0 false}"
+                    "$ref": "#/definitions/\u0026{7106 0xc8208a9800 false}"
                 },
                 "SriovNetSupport": {
-                    "$ref": "#/definitions/\u0026{7179 0xc8206b8930 false}"
+                    "$ref": "#/definitions/\u0026{7179 0xc8208a9860 false}"
                 },
                 "State": {
-                    "$ref": "#/definitions/\u0026{7246 0xc8206b8990 false}"
+                    "$ref": "#/definitions/\u0026{7246 0xc8208a98c0 false}"
                 },
                 "StateReason": {
-                    "$ref": "#/definitions/\u0026{7394 0xc8206b89f0 false}"
+                    "$ref": "#/definitions/\u0026{7394 0xc8208a9920 false}"
                 },
                 "StateTransitionReason": {
                     "type": "string"
@@ -397,7 +413,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{7592 0xc8206b8a50 false}"
+                        "$ref": "#/definitions/\u0026{7592 0xc8208a9980 false}"
                     }
                 },
                 "VirtualizationType": {
@@ -413,7 +429,7 @@
             "type": "object",
             "properties": {
                 "Groups": {
-                    "$ref": "#/definitions/\u0026{7929 0xc820676360 false}"
+                    "$ref": "#/definitions/\u0026{7929 0xc82086e8d0 false}"
                 },
                 "Instances": {
                     "type": "array",
@@ -479,7 +495,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{10218 0xc8206f7f80 false}"
+                    "$ref": "#/definitions/\u0026{10218 0xc82063f1d0 false}"
                 }
             }
         },
@@ -507,6 +523,39 @@
                 }
             }
         },
+        "IAMUserGroup": {
+            "title": "IAMUserGroup",
+            "type": "object",
+            "properties": {
+                "Group": {
+                    "$ref": "#/definitions/IAMGroup"
+                },
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "Marker": {
+                    "$ref": "#/definitions/\u0026{14102 0xc82073b740 false}"
+                },
+                "Users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IAMUser"
+                    }
+                }
+            }
+        },
+        "IAMUserGroups": {
+            "title": "IAMUserGroups",
+            "type": "object",
+            "properties": {
+                "IAM_user_groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IAMUserGroup"
+                    }
+                }
+            }
+        },
         "IAMUsers": {
             "title": "IAMUsers",
             "type": "object",
@@ -521,7 +570,7 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{12244 0xc8207997d0 false}"
+                    "$ref": "#/definitions/\u0026{12244 0xc82091c000 false}"
                 }
             }
         },
@@ -545,7 +594,7 @@
                     "$ref": "#/definitions/\u0026{time Time}"
                 },
                 "Config": {
-                    "$ref": "#/definitions/\u0026{13830 0xc8208797d0 false}"
+                    "$ref": "#/definitions/\u0026{16380 0xc82020e720 false}"
                 },
                 "Id": {
                     "type": "string"
@@ -570,18 +619,18 @@
                     "type": "string"
                 },
                 "NextRecordIdentifier": {
-                    "$ref": "#/definitions/\u0026{14711 0xc8208cc300 false}"
+                    "$ref": "#/definitions/\u0026{17261 0xc820253bf0 false}"
                 },
                 "NextRecordName": {
-                    "$ref": "#/definitions/\u0026{14782 0xc8208cc360 false}"
+                    "$ref": "#/definitions/\u0026{17332 0xc820253c50 false}"
                 },
                 "NextRecordType": {
-                    "$ref": "#/definitions/\u0026{14847 0xc8208cc3c0 false}"
+                    "$ref": "#/definitions/\u0026{17397 0xc820253cb0 false}"
                 },
                 "ResourceRecordSets": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{14914 0xc8208cc7b0 false}"
+                        "$ref": "#/definitions/\u0026{17464 0xc8202680c0 false}"
                     }
                 }
             }
@@ -594,13 +643,13 @@
                     "type": "boolean"
                 },
                 "Marker": {
-                    "$ref": "#/definitions/\u0026{14353 0xc82082f050 false}"
+                    "$ref": "#/definitions/\u0026{16903 0xc8201af590 false}"
                 },
                 "MaxItems": {
                     "type": "string"
                 },
                 "NextMarker": {
-                    "$ref": "#/definitions/\u0026{14481 0xc82082f0b0 false}"
+                    "$ref": "#/definitions/\u0026{17031 0xc8201af5f0 false}"
                 },
                 "Route53_hosted_zones": {
                     "type": "array",
@@ -639,7 +688,7 @@
                     "type": "string"
                 },
                 "Tags": {
-                    "$ref": "#/definitions/\u0026{20958 0xc8202e25a0 false}"
+                    "$ref": "#/definitions/\u0026{23508 0xc8203f7260 false}"
                 },
                 "VpcId": {
                     "type": "string"
@@ -651,19 +700,19 @@
             "type": "object",
             "properties": {
                 "FromPort": {
-                    "$ref": "#/definitions/\u0026{21080 0xc82032cf30 false}"
+                    "$ref": "#/definitions/\u0026{23630 0xc8204485d0 false}"
                 },
                 "IpProtocol": {
                     "type": "string"
                 },
                 "IpRanges": {
-                    "$ref": "#/definitions/\u0026{21173 0xc82032cf90 false}"
+                    "$ref": "#/definitions/\u0026{23723 0xc820448630 false}"
                 },
                 "PrefixListIds": {
-                    "$ref": "#/definitions/\u0026{21225 0xc82032cff0 false}"
+                    "$ref": "#/definitions/\u0026{23775 0xc820448690 false}"
                 },
                 "ToPort": {
-                    "$ref": "#/definitions/\u0026{21275 0xc82032d050 false}"
+                    "$ref": "#/definitions/\u0026{23825 0xc8204486f0 false}"
                 },
                 "UserIDGroupPairs": {
                     "type": "array",
@@ -678,7 +727,7 @@
             "type": "object",
             "properties": {
                 "FromPort": {
-                    "$ref": "#/definitions/\u0026{21452 0xc8203c83c0 false}"
+                    "$ref": "#/definitions/\u0026{24002 0xc8204e6de0 false}"
                 },
                 "IpProtocol": {
                     "type": "string"
@@ -690,13 +739,13 @@
                     }
                 },
                 "PrefixListIds": {
-                    "$ref": "#/definitions/\u0026{21609 0xc8203c8450 false}"
+                    "$ref": "#/definitions/\u0026{24159 0xc8204e6e70 false}"
                 },
                 "ToPort": {
-                    "$ref": "#/definitions/\u0026{21659 0xc8203c84b0 false}"
+                    "$ref": "#/definitions/\u0026{24209 0xc8204e6ed0 false}"
                 },
                 "UserIdGroupPairs": {
-                    "$ref": "#/definitions/\u0026{21712 0xc8203c8510 false}"
+                    "$ref": "#/definitions/\u0026{24262 0xc8204e6f30 false}"
                 }
             }
         },
@@ -716,7 +765,7 @@
                 "UserIdGroupPairs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{21901 0xc82036bf20 false}"
+                        "$ref": "#/definitions/\u0026{24451 0xc82048df80 false}"
                     }
                 }
             }
@@ -755,7 +804,7 @@
                 "Tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/\u0026{24168 0xc8204a0990 false}"
+                        "$ref": "#/definitions/\u0026{26718 0xc820a232f0 false}"
                     }
                 },
                 "VpcId": {
@@ -768,19 +817,19 @@
             "type": "object",
             "properties": {
                 "AccepterVpcInfo": {
-                    "$ref": "#/definitions/\u0026{24440 0xc820527d70 false}"
+                    "$ref": "#/definitions/\u0026{26990 0xc820acda70 false}"
                 },
                 "ExpirationTime": {
-                    "$ref": "#/definitions/\u0026{25108 0xc820527dd0 false}"
+                    "$ref": "#/definitions/\u0026{27658 0xc820acdad0 false}"
                 },
                 "RequesterVpcInfo": {
-                    "$ref": "#/definitions/\u0026{25169 0xc820527e90 false}"
+                    "$ref": "#/definitions/\u0026{27719 0xc820acdb90 false}"
                 },
                 "Status": {
-                    "$ref": "#/definitions/\u0026{25476 0xc820527ef0 false}"
+                    "$ref": "#/definitions/\u0026{28026 0xc820acdbf0 false}"
                 },
                 "Tags": {
-                    "$ref": "#/definitions/\u0026{25635 0xc820527f50 false}"
+                    "$ref": "#/definitions/\u0026{28185 0xc820acdc50 false}"
                 },
                 "VpcPeeringConnectionId": {
                     "type": "string"

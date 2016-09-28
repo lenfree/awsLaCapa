@@ -24,6 +24,7 @@ func init() {
                         beego.NSInclude(
                                 &controllers.IAMUsersController{},
                                 &controllers.IAMGroupsController{},
+                                &controllers.IAMUserGroupsController{},
                         ),
                 ),
                 beego.NSNamespace("/vpc",

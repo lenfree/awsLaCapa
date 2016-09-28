@@ -1,9 +1,13 @@
-FROM golang
+FROM golang:1.7.1
 
-COPY . /
+ENV GOPATH=/go
 
-RUN make -f /Makefile script
+COPY . /go/src/github.com/lenfree/awsLaCapa/
 
 WORKDIR /go/src/github.com/lenfree/awsLaCapa
 
-CMD ["bee", "run"]
+# This will install all required packages and run test
+RUN make script
+
+# This starts the app and web server
+CMD ["make", "appstart"]

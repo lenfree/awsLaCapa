@@ -46,6 +46,20 @@ func TestGetIAMGroups(t *testing.T) {
         })
 }
 
+func TestGetIAMUserGroups(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/iam/user_groups", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetIAMUserGroups", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test GetIAMUserGroups Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
 func TestGetS3(t *testing.T) {
         r, _ := http.NewRequest("GET", "/v1/s3", nil)
         w := httptest.NewRecorder()

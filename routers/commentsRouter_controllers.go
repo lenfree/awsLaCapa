@@ -27,6 +27,13 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUserGroupsController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUserGroupsController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/user_groups`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"],
 		beego.ControllerComments{
 			Method: "GetAll",

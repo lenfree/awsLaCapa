@@ -33,7 +33,7 @@ aws_secret_access_key = <SECRET_ACCESS_KEY>
 EOF
 
 $ cd /go/src/github.com/lenfree/awsLaCapa
-$ bee run
+$ make appstart
 ```
 
 ### Rest API Documentation available in below URL:

@@ -1,12 +1,14 @@
 DEFAULT_NAME := awslacapa
 CONTAINER_PORT ?= 8080
+DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 
 all: script
 
 .PHONY: install
 install:
 	go get -u github.com/smartystreets/goconvey
-	go get -u -v $(go list -f '{{join .Imports "\n"}}' ./... | sort | uniq | grep -v golang-samples)
+	go get github.com/beego/bee
+	go get -v
 
 .PHONY: script
 script: install
@@ -22,12 +24,15 @@ run:
 ifndef HOST_PORT
 	$(error HOST_PORT is not set)
 endif
-	docker run -d -p $(PORT):$(CONTAINER_PORT) -v $(PWD):/root/.aws/ awsLaCapa .
+	docker run -d -p $(HOST_PORT):$(CONTAINER_PORT) -v $(PWD):/root/.aws/ $(DOCKER_IMAGE_NAME)
 
 .PHONY: image
 image:
 DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 
+.PHONY: appstart
+appstart:
+	bee run
 
 .PHONY: help
 help:
@@ -38,3 +43,4 @@ help:
 	@echo "                  Default container name is awslacapa"
 	@echo "  run           Run Docker container DOCKER_IMAGE_NAME with port"
 	@echo "                  Default container is awslacapa"
+	@echo "  appstart      Run the app and start web server"
