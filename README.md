@@ -67,7 +67,7 @@ $ cat>>credentials<<EOF
 aws_access_key_id = <ACCESS_KEY_ID>
 aws_secret_access_key = <SECRET_ACCESS_KEY>
 EOF
-$ make run PORT=8081
+$ make run HOST_PORT=8081
 ```
 
 ### Contributing:
