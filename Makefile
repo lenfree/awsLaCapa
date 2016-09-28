@@ -31,8 +31,14 @@ image:
 DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 
 .PHONY: appstart
-appstart:
+appstart: aws-credentials
 	bee run
+
+# This is dangerous. One might accidentally push to public repo. I'd prefer
+# using environment varibles instead
+.PHONY: aws-credentials
+aws-credentials:
+	cp credentials /root/.aws
 
 .PHONY: help
 help:
