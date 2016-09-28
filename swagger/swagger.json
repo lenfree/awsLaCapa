@@ -1,0 +1,766 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Url http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/dhcp/": {
+            "get": {
+                "tags": [
+                    "dhcp"
+                ],
+                "description": "Return all DHCP Options",
+                "operationId": "DHCPController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/DHCPOptionSet"
+                        }
+                    }
+                }
+            }
+        },
+        "/ec2/": {
+            "get": {
+                "tags": [
+                    "ec2"
+                ],
+                "description": "Return all EC2 instances",
+                "operationId": "EC2Controller.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/EC2Reservations"
+                        }
+                    }
+                }
+            }
+        },
+        "/iam/": {
+            "get": {
+                "tags": [
+                    "iam"
+                ],
+                "description": "Return all IAM users",
+                "operationId": "IAMController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/IAMUsers"
+                        }
+                    }
+                }
+            }
+        },
+        "/route53/": {
+            "get": {
+                "tags": [
+                    "route53"
+                ],
+                "description": "Return all Route53 Hosted Zones",
+                "operationId": "Route53Controller.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Route53HostedZones"
+                        }
+                    }
+                }
+            }
+        },
+        "/route53/hostedzone/{id}": {
+            "get": {
+                "tags": [
+                    "route53"
+                ],
+                "description": "Return all Route53 Hosted Zone Resource Record Set",
+                "operationId": "Route53Controller.Get",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Route53HostedZoneRRSet"
+                        }
+                    }
+                }
+            }
+        },
+        "/s3/": {
+            "get": {
+                "tags": [
+                    "s3"
+                ],
+                "description": "Return all S3 Buckets",
+                "operationId": "S3Controller.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Buckets"
+                        }
+                    }
+                }
+            }
+        },
+        "/s3/{bucket}": {
+            "get": {
+                "tags": [
+                    "s3"
+                ],
+                "description": "Return S3 Bucket Directories/Prefix",
+                "operationId": "S3Controller.GetByBucketName",
+                "responses": {
+                    "200": {}
+                }
+            }
+        },
+        "/s3/{bucket}/{directory}/{objkey}": {
+            "get": {
+                "tags": [
+                    "s3"
+                ],
+                "description": "Return S3 Bucket Object",
+                "operationId": "S3Controller.GetByObjectKey",
+                "responses": {
+                    "200": {}
+                }
+            }
+        },
+        "/security_groups/": {
+            "get": {
+                "tags": [
+                    "security_groups"
+                ],
+                "description": "Return all Security Group Set",
+                "operationId": "SecurityGroupController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/SecurityGroups"
+                        }
+                    }
+                }
+            }
+        },
+        "/vpc/": {
+            "get": {
+                "tags": [
+                    "vpc"
+                ],
+                "description": "Return all VPCs",
+                "operationId": "VPCController.GetAll",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/VPCs"
+                        }
+                    }
+                }
+            }
+        },
+        "/vpc/vpc_peering_connections": {
+            "get": {
+                "tags": [
+                    "vpc"
+                ],
+                "description": "Return all VPC Peering Connections",
+                "operationId": "VPCController.GetAllVPCPeering",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/VPCPeeringConnections"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Bucket": {
+            "title": "Bucket",
+            "type": "object",
+            "properties": {
+                "CreationDate": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Buckets": {
+            "title": "Buckets",
+            "type": "object",
+            "properties": {
+                "buckets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bucket"
+                    }
+                },
+                "owner": {
+                    "$ref": "#/definitions/Owner"
+                }
+            }
+        },
+        "DHCPConfiguration": {
+            "title": "DHCPConfiguration",
+            "type": "object",
+            "properties": {
+                "Key": {
+                    "type": "string"
+                },
+                "Values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{570 0xc820640f60 false}"
+                    }
+                }
+            }
+        },
+        "DHCPOption": {
+            "title": "DHCPOption",
+            "type": "object",
+            "properties": {
+                "DhcpOption": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DHCPConfiguration"
+                    }
+                }
+            }
+        },
+        "DHCPOptionSet": {
+            "title": "DHCPOptionSet",
+            "type": "object",
+            "properties": {
+                "DhcpOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DHCPOption"
+                    }
+                },
+                "DhcpOptionsId": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "$ref": "#/definitions/\u0026{894 0xc8205b0f90 false}"
+                }
+            }
+        },
+        "EC2Instance": {
+            "title": "EC2Instance",
+            "type": "object",
+            "properties": {
+                "AmiLaunchIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Architecture": {
+                    "type": "string"
+                },
+                "BlockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{2635 0xc820707c20 false}"
+                    }
+                },
+                "ClientToken": {
+                    "type": "string"
+                },
+                "EbsOptimized": {
+                    "type": "boolean"
+                },
+                "EnaSupport": {
+                    "$ref": "#/definitions/\u0026{3251 0xc820707cb0 false}"
+                },
+                "Hypervisor": {
+                    "type": "string"
+                },
+                "IamInstanceProfile": {
+                    "$ref": "#/definitions/\u0026{3369 0xc820707d10 false}"
+                },
+                "ImageId": {
+                    "type": "string"
+                },
+                "InstanceId": {
+                    "type": "string"
+                },
+                "InstanceLifecycle": {
+                    "$ref": "#/definitions/\u0026{3634 0xc820707d70 false}"
+                },
+                "InstanceType": {
+                    "type": "string"
+                },
+                "KernelId": {
+                    "$ref": "#/definitions/\u0026{3759 0xc820707dd0 false}"
+                },
+                "KeyName": {
+                    "type": "string"
+                },
+                "LaunchTime": {
+                    "$ref": "#/definitions/\u0026{time Time}"
+                },
+                "Monitoring": {
+                    "$ref": "#/definitions/\u0026{3928 0xc820707e30 false}"
+                },
+                "NetworkInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{4039 0xc8207220f0 false}"
+                    }
+                },
+                "Placement": {
+                    "$ref": "#/definitions/\u0026{5811 0xc820722240 false}"
+                },
+                "Platform": {
+                    "$ref": "#/definitions/\u0026{6195 0xc8207222a0 false}"
+                },
+                "PrivateDnsName": {
+                    "type": "string"
+                },
+                "PrivateIpAddress": {
+                    "type": "string"
+                },
+                "ProductCodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{6376 0xc820722300 false}"
+                    }
+                },
+                "PublicDnsName": {
+                    "type": "string"
+                },
+                "PublicIpAddress": {
+                    "$ref": "#/definitions/\u0026{6626 0xc820722390 false}"
+                },
+                "RamdiskId": {
+                    "$ref": "#/definitions/\u0026{6687 0xc8207223f0 false}"
+                },
+                "RootDeviceName": {
+                    "type": "string"
+                },
+                "RootDeviceType": {
+                    "type": "string"
+                },
+                "SecurityGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{6864 0xc820722450 false}"
+                    }
+                },
+                "SourceDestCheck": {
+                    "type": "boolean"
+                },
+                "SpotInstanceRequestId": {
+                    "$ref": "#/definitions/\u0026{7106 0xc8207224e0 false}"
+                },
+                "SriovNetSupport": {
+                    "$ref": "#/definitions/\u0026{7179 0xc820722540 false}"
+                },
+                "State": {
+                    "$ref": "#/definitions/\u0026{7246 0xc8207225a0 false}"
+                },
+                "StateReason": {
+                    "$ref": "#/definitions/\u0026{7394 0xc820722600 false}"
+                },
+                "StateTransitionReason": {
+                    "type": "string"
+                },
+                "SubnetId": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{7592 0xc820722660 false}"
+                    }
+                },
+                "VirtualizationType": {
+                    "type": "string"
+                },
+                "VpcId": {
+                    "type": "string"
+                }
+            }
+        },
+        "EC2Instances": {
+            "title": "EC2Instances",
+            "type": "object",
+            "properties": {
+                "Groups": {
+                    "$ref": "#/definitions/\u0026{7929 0xc8206d66c0 false}"
+                },
+                "Instances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EC2Instance"
+                    }
+                },
+                "OwnerId": {
+                    "type": "string"
+                },
+                "RequesterId": {
+                    "type": "string"
+                },
+                "ReservationId": {
+                    "type": "string"
+                }
+            }
+        },
+        "EC2Reservations": {
+            "title": "EC2Reservations",
+            "type": "object",
+            "properties": {
+                "Reservations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EC2Instances"
+                    }
+                }
+            }
+        },
+        "IAMUser": {
+            "title": "IAMUser",
+            "type": "object",
+            "properties": {
+                "Arn": {
+                    "type": "string"
+                },
+                "CreateDate": {
+                    "type": "string"
+                },
+                "PasswordLastUsed": {
+                    "type": "string"
+                },
+                "Path": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "string"
+                },
+                "UserName": {
+                    "type": "string"
+                }
+            }
+        },
+        "IAMUsers": {
+            "title": "IAMUsers",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "Marker": {
+                    "$ref": "#/definitions/\u0026{10199 0xc820767440 false}"
+                },
+                "iam_users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IAMUser"
+                    }
+                }
+            }
+        },
+        "Owner": {
+            "title": "Owner",
+            "type": "object",
+            "properties": {
+                "DisplayName": {
+                    "type": "string"
+                },
+                "ID": {
+                    "type": "string"
+                }
+            }
+        },
+        "Route53HostedZone": {
+            "title": "Route53HostedZone",
+            "type": "object",
+            "properties": {
+                "CallerReference": {
+                    "$ref": "#/definitions/\u0026{time Time}"
+                },
+                "Config": {
+                    "$ref": "#/definitions/\u0026{11785 0xc8201dfc80 false}"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "ResourceRecordSetCount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Route53HostedZoneRRSet": {
+            "title": "Route53HostedZoneRRSet",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "MaxItems": {
+                    "type": "string"
+                },
+                "NextRecordIdentifier": {
+                    "$ref": "#/definitions/\u0026{12666 0xc820230060 false}"
+                },
+                "NextRecordName": {
+                    "$ref": "#/definitions/\u0026{12737 0xc8202300c0 false}"
+                },
+                "NextRecordType": {
+                    "$ref": "#/definitions/\u0026{12802 0xc820230120 false}"
+                },
+                "ResourceRecordSets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{12869 0xc820230510 false}"
+                    }
+                }
+            }
+        },
+        "Route53HostedZones": {
+            "title": "Route53HostedZones",
+            "type": "object",
+            "properties": {
+                "IsTruncated": {
+                    "type": "boolean"
+                },
+                "Marker": {
+                    "$ref": "#/definitions/\u0026{12308 0xc820191c20 false}"
+                },
+                "MaxItems": {
+                    "type": "string"
+                },
+                "NextMarker": {
+                    "$ref": "#/definitions/\u0026{12436 0xc820191c80 false}"
+                },
+                "Route53_hosted_zones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Route53HostedZone"
+                    }
+                }
+            }
+        },
+        "SecurityGroup": {
+            "title": "SecurityGroup",
+            "type": "object",
+            "properties": {
+                "Description": {
+                    "type": "string"
+                },
+                "GroupId": {
+                    "type": "string"
+                },
+                "GroupName": {
+                    "type": "string"
+                },
+                "IPPermissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityGroupIPPermission"
+                    }
+                },
+                "IPPermissionsEgress": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityGroupIPPermissionEgress"
+                    }
+                },
+                "OwnerId": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "$ref": "#/definitions/\u0026{18913 0xc820396120 false}"
+                },
+                "VpcId": {
+                    "type": "string"
+                }
+            }
+        },
+        "SecurityGroupIPPermission": {
+            "title": "SecurityGroupIPPermission",
+            "type": "object",
+            "properties": {
+                "FromPort": {
+                    "$ref": "#/definitions/\u0026{19035 0xc8203d6360 false}"
+                },
+                "IpProtocol": {
+                    "type": "string"
+                },
+                "IpRanges": {
+                    "$ref": "#/definitions/\u0026{19128 0xc8203d63c0 false}"
+                },
+                "PrefixListIds": {
+                    "$ref": "#/definitions/\u0026{19180 0xc8203d6420 false}"
+                },
+                "ToPort": {
+                    "$ref": "#/definitions/\u0026{19230 0xc8203d6480 false}"
+                },
+                "UserIDGroupPairs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityGroupUserIDGroupPairs"
+                    }
+                }
+            }
+        },
+        "SecurityGroupIPPermissionEgress": {
+            "title": "SecurityGroupIPPermissionEgress",
+            "type": "object",
+            "properties": {
+                "FromPort": {
+                    "$ref": "#/definitions/\u0026{19407 0xc820458930 false}"
+                },
+                "IpProtocol": {
+                    "type": "string"
+                },
+                "IpRanges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityGroupIPRanges"
+                    }
+                },
+                "PrefixListIds": {
+                    "$ref": "#/definitions/\u0026{19564 0xc8204589c0 false}"
+                },
+                "ToPort": {
+                    "$ref": "#/definitions/\u0026{19614 0xc820458a20 false}"
+                },
+                "UserIdGroupPairs": {
+                    "$ref": "#/definitions/\u0026{19667 0xc820458a80 false}"
+                }
+            }
+        },
+        "SecurityGroupIPRanges": {
+            "title": "SecurityGroupIPRanges",
+            "type": "object",
+            "properties": {
+                "CidrIp": {
+                    "type": "string"
+                }
+            }
+        },
+        "SecurityGroupUserIDGroupPairs": {
+            "title": "SecurityGroupUserIDGroupPairs",
+            "type": "object",
+            "properties": {
+                "UserIdGroupPairs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{19856 0xc820416c00 false}"
+                    }
+                }
+            }
+        },
+        "SecurityGroups": {
+            "title": "SecurityGroups",
+            "type": "object",
+            "properties": {
+                "security_groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityGroup"
+                    }
+                }
+            }
+        },
+        "VPC": {
+            "title": "VPC",
+            "type": "object",
+            "properties": {
+                "CidrBlock": {
+                    "type": "string"
+                },
+                "DhcpOptionsId": {
+                    "type": "string"
+                },
+                "InstanceTenancy": {
+                    "type": "string"
+                },
+                "IsDefault": {
+                    "type": "boolean"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/\u0026{22123 0xc8205258f0 false}"
+                    }
+                },
+                "VpcId": {
+                    "type": "string"
+                }
+            }
+        },
+        "VPCPeeringConnection": {
+            "title": "VPCPeeringConnection",
+            "type": "object",
+            "properties": {
+                "AccepterVpcInfo": {
+                    "$ref": "#/definitions/\u0026{22395 0xc8205a1e30 false}"
+                },
+                "ExpirationTime": {
+                    "$ref": "#/definitions/\u0026{23063 0xc8205a1e90 false}"
+                },
+                "RequesterVpcInfo": {
+                    "$ref": "#/definitions/\u0026{23124 0xc8205a1f50 false}"
+                },
+                "Status": {
+                    "$ref": "#/definitions/\u0026{23431 0xc8205a1fb0 false}"
+                },
+                "Tags": {
+                    "$ref": "#/definitions/\u0026{23590 0xc8205b0030 false}"
+                },
+                "VpcPeeringConnectionId": {
+                    "type": "string"
+                }
+            }
+        },
+        "VPCPeeringConnections": {
+            "title": "VPCPeeringConnections",
+            "type": "object",
+            "properties": {
+                "vpc_peering_connections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VPCPeeringConnection"
+                    }
+                }
+            }
+        },
+        "VPCs": {
+            "title": "VPCs",
+            "type": "object",
+            "properties": {
+                "Vpcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VPC"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "s3",
+            "description": "Category Object\n"
+        }
+    ]
+}
