@@ -46,8 +46,8 @@ aws-credentials:
 .PHONY: release
 release:
 	mkdir -p release
-	GOOS=linux GOARCH=amd64 go build -o release/$(DEFAULT_NAME)-linux-amd64 $(package)
-	GOOS=darwin GOARCH=amd64 go build -o release/$(DEFAULT_NAME)-darwin-amd64 $(package)
+	GOOS=linux GOARCH=amd64 go build -o release/$(project_name)-linux-amd64 $(package)
+	GOOS=darwin GOARCH=amd64 go build -o release/$(project_name)-darwin-amd64 $(package)
 
 .PHONY: help
 help:
