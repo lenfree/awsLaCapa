@@ -5,16 +5,19 @@ DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 project_name = awsLaCapa
 package = github.com/lenfree/$(project_name)
 
-.PHONY: script
-script: install
-	go vet ./...
-	go test -v -race ./...
+all: script
 
 .PHONY: install
 install:
 	go get -u github.com/smartystreets/goconvey
 	go get github.com/beego/bee
 	go get -v
+
+.PHONY: script
+script: install
+	go vet ./...
+	go test -v -race ./...
+	go build -v -tags test ./...
 
 .PHONY: build
 build: image
