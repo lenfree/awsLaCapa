@@ -2,6 +2,9 @@ DEFAULT_NAME := awslacapa
 CONTAINER_PORT ?= 8080
 DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 
+project_name = awsLaCapa
+package = github.com/lenfree/$(project_name)
+
 all: script
 
 .PHONY: install
@@ -39,6 +42,12 @@ appstart: aws-credentials
 .PHONY: aws-credentials
 aws-credentials:
 	cp credentials /root/.aws
+
+.PHONY: release
+release:
+	mkdir -p release
+	GOOS=linux GOARCH=amd64 go build -o release/$(DEFAULT_NAME)-linux-amd64 $(package)
+	GOOS=darwin GOARCH=amd64 go build -o release/$(DEFAULT_NAME)-darwin-amd64 $(package)
 
 .PHONY: help
 help:

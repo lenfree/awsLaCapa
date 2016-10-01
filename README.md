@@ -11,6 +11,8 @@ it simple.
 
 Status: Work In Progress
 
+Build Status: [![Build Status](https://travis-ci.org/lenfree/awsLaCapa.svg?branch=master)](https://travis-ci.org/lenfree/awsLaCapa)
+
 ### Getting started:
 ----------------
 
