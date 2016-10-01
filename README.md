@@ -1,6 +1,8 @@
 awsLaCapa
 ==========
 
+Build Status: [![Build Status](https://travis-ci.org/lenfree/awsLaCapa.svg?branch=master)](https://travis-ci.org/lenfree/awsLaCapa)
+
 As a AWS user, it takes a large amount of time to grab all AWS resources with
 logging into AWS console. Moreover, there are cli but they are use by resources
 such as get a list of s3 buckets, we run s3 command, with ec2, we use ec2. This
@@ -11,9 +13,7 @@ it simple.
 
 Status: Work In Progress
 
-Build Status: [![Build Status](https://travis-ci.org/lenfree/awsLaCapa.svg?branch=master)](https://travis-ci.org/lenfree/awsLaCapa)
-
-Binary Releases:
+### Binary Releases:
 
 ```
 https://github.com/lenfree/awsLaCapa/releases
