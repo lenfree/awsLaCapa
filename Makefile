@@ -5,7 +5,7 @@ DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 project_name = awsLaCapa
 package = github.com/lenfree/$(project_name)
 
-all: script
+all: release
 
 .PHONY: install
 install:
@@ -45,7 +45,7 @@ aws-credentials:
 	cp credentials /root/.aws
 
 .PHONY: release
-release:
+release: script
 	mkdir -p release
 	GOOS=linux GOARCH=amd64 go build -o release/$(project_name)-linux-amd64 $(package)
 	GOOS=darwin GOARCH=amd64 go build -o release/$(project_name)-darwin-amd64 $(package)
