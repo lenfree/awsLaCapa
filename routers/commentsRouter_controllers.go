@@ -20,6 +20,20 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:ELBController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:ELBController"],
+		beego.ControllerComments{
+			Method: "GetELBs",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:ELBv2Controller"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:ELBv2Controller"],
+		beego.ControllerComments{
+			Method: "GetELBs",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMGroupsController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMGroupsController"],
 		beego.ControllerComments{
 			Method: "GetAllIAMGroups",

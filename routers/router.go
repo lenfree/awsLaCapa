@@ -47,9 +47,19 @@ func init() {
                                 &controllers.DHCPController{},
                         ),
                 ),
-                beego.NSNamespace("/security_groups",
+                beego.NSNamespace("/security_group",
                         beego.NSInclude(
                                 &controllers.SecurityGroupController{},
+                        ),
+                ),
+                beego.NSNamespace("/elb",
+                        beego.NSInclude(
+                                &controllers.ELBController{},
+                        ),
+                ),
+                beego.NSNamespace("/elbv2",
+                        beego.NSInclude(
+                                &controllers.ELBv2Controller{},
                         ),
                 ),
         )

@@ -201,13 +201,55 @@ func TestGetDHCPOptionSet(t *testing.T) {
 }
 
 func TestGetSecurityGroups(t *testing.T) {
-        r, _ := http.NewRequest("GET", "/v1/security_groups", nil)
+        r, _ := http.NewRequest("GET", "/v1/security_group", nil)
         w := httptest.NewRecorder()
         beego.BeeApp.Handlers.ServeHTTP(w, r)
 
         beego.Trace("testing", "TestGetSecurityGroups", "Code[%d]\n%s", w.Code, w.Body.String())
 
         Convey("Subject: Test Security Groups Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetIAMServerCertificateMetadataList(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/iam/server_certificates", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetIAMServerCertificateList", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test GetIAMserverCertificateMedataList Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetELBv2LoadBalancers(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/elbv2", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetELBv2LoadBalancers", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test TestGetELBv2LoadBalancers Endpoint\n", t, func() {
+                Convey("Status Code Should Be 200", func() {
+                        So(w.Code, ShouldEqual, 200)
+                })
+        })
+}
+
+func TestGetELBLoadBalancers(t *testing.T) {
+        r, _ := http.NewRequest("GET", "/v1/elb", nil)
+        w := httptest.NewRecorder()
+        beego.BeeApp.Handlers.ServeHTTP(w, r)
+
+        beego.Trace("testing", "TestGetELBLoadBalancers", "Code[%d]\n%s", w.Code, w.Body.String())
+
+        Convey("Subject: Test TestGetELBLoadBalancers Endpoint\n", t, func() {
                 Convey("Status Code Should Be 200", func() {
                         So(w.Code, ShouldEqual, 200)
                 })
