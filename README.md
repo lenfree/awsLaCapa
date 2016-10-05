@@ -13,11 +13,7 @@ it simple.
 
 Status: Work In Progress
 
-### Binary Releases:
-
-```
-https://github.com/lenfree/awsLaCapa/releases
-```
+[Binary Releases](https://github.com/lenfree/awsLaCapa/releases)
 
 ### Getting started:
 ----------------
@@ -43,6 +39,23 @@ EOF
 $ cd /go/src/github.com/lenfree/awsLaCapa
 $ make appstart
 ```
+
+### Run Binary:
+```
+1. Download binary release
+2. Create directory conf in same path as where you would run the binary file (mkdir conf)
+3. cat >>conf/app.conf<<EOF
+appname = awsLaCapa
+httpport = 8080
+runmode = prod
+autorender = true
+copyrequestbody = true
+EnableDocs = true
+EOF
+4. Copy API doco static directory(https://github.com/lenfree/awsLaCapa/tree/master/swagger) to same project directory
+```
+
+[More info on running Binary plus static files](https://github.com/chu888chu888/Go-beego/blob/master/docs/en/Quickstart.md#deployment)
 
 ### Rest API Documentation available in below URL:
 ```
