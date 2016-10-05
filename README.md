@@ -48,7 +48,7 @@ $ make appstart
 appname = awsLaCapa
 httpport = 8080
 runmode = prod
-autorender = true
+autorender = false
 copyrequestbody = true
 EnableDocs = true
 EOF
