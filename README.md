@@ -28,6 +28,14 @@ $ make install
 $ make script
 ```
 
+### Configure region:
+
+Set awsRegion in conf/app.conf
+
+```bash
+awsRegion = "ap-southeast-2"
+```
+
 ### Start server:
 ```
 $ cat>>~/.aws/credentials<<EOF

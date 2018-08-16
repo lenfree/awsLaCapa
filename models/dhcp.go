@@ -1,11 +1,11 @@
 package models
 
 import (
-        "github.com/astaxie/beego"
-        "github.com/aws/aws-sdk-go/aws"
-        "github.com/aws/aws-sdk-go/aws/awserr"
-        "github.com/aws/aws-sdk-go/aws/session"
-        "github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/astaxie/beego"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
 /* This is a hack.
@@ -15,45 +15,45 @@ not being used anywhere else except for Swagger API documentation.
 */
 
 type DHCPConfiguration struct {
-        Key string       `json:"Key"`
-        Values []struct {
-            Value string `json:"Value"`
-        } `json:"Values"`
+	Key    string `json:"Key"`
+	Values []struct {
+		Value string `json:"Value"`
+	} `json:"Values"`
 }
 
 type DHCPOption struct {
-        DhcpConfigurations []DHCPConfiguration `json:"DhcpOption"`
+	DhcpConfigurations []DHCPConfiguration `json:"DhcpOption"`
 }
 
 type DHCPOptionSet struct {
-        DhcpOptions []DHCPOption `json:"DhcpOptions"`
-        DhcpOptionsID string     `json:"DhcpOptionsId"`
-        Tags interface{}         `json:"Tags"`
+	DhcpOptions   []DHCPOption `json:"DhcpOptions"`
+	DhcpOptionsID string       `json:"DhcpOptionsId"`
+	Tags          interface{}  `json:"Tags"`
 }
 
 func DHCPOptionsList() (*ec2.DescribeDhcpOptionsOutput, error) {
-        svc := ec2.New(session.New(), &aws.Config{
-                Region: aws.String("ap-southeast-2"),
-        })
+	svc := ec2.New(session.New(), &aws.Config{
+		Region: aws.String(beego.AppConfig.String("awsRegion")),
+	})
 
-        params := &ec2.DescribeDhcpOptionsInput{}
+	params := &ec2.DescribeDhcpOptionsInput{}
 
-        resp, err := svc.DescribeDhcpOptions(params)
-        if err != nil {
-                if awsErr, ok := err.(awserr.Error); ok {
-                        beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-                        if reqErr, ok := err.(awserr.RequestFailure); ok {
-                                beego.Error(
-                                        reqErr.Code(),
-                                        reqErr.Message(),
-                                        reqErr.StatusCode(),
-                                        reqErr.RequestID(),
-                                )
-                        }
-                } else {
-                        beego.Debug(err.Error())
-                }
-                return nil, err
-        }
-        return resp, nil
+	resp, err := svc.DescribeDhcpOptions(params)
+	if err != nil {
+		if awsErr, ok := err.(awserr.Error); ok {
+			beego.Error(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
+			if reqErr, ok := err.(awserr.RequestFailure); ok {
+				beego.Error(
+					reqErr.Code(),
+					reqErr.Message(),
+					reqErr.StatusCode(),
+					reqErr.RequestID(),
+				)
+			}
+		} else {
+			beego.Debug(err.Error())
+		}
+		return nil, err
+	}
+	return resp, nil
 }

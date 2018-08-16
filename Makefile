@@ -19,6 +19,10 @@ script: install
 	go test -v -race ./...
 	go build -v -tags test ./...
 
+.PHONY: test
+test:
+	go test -v -race ./...
+
 .PHONY: build
 build: image
 	docker build -t $(DOCKER_IMAGE_NAME) .
@@ -35,17 +39,11 @@ image:
 DOCKER_IMAGE_NAME ?= $(DEFAULT_NAME)
 
 .PHONY: appstart
-appstart: aws-credentials
+appstart:
 	bee run
 
-# This is dangerous. One might accidentally push to public repo. I'd prefer
-# using environment varibles instead
-.PHONY: aws-credentials
-aws-credentials:
-	cp credentials /root/.aws
-
 .PHONY: release
-release: script
+release:
 	mkdir -p release
 	GOOS=linux GOARCH=amd64 go build -o release/$(project_name)-linux-amd64 $(package)
 	GOOS=darwin GOARCH=amd64 go build -o release/$(project_name)-darwin-amd64 $(package)
@@ -55,6 +53,7 @@ help:
 	@echo "Usage: make <command>"
 	@echo "  install       Install all required Go packages"
 	@echo "  script        Install all rquired Go packages and run test"
+	@echo "  test          Run test"
 	@echo "  build         Build Docker container with name DOCKER_IMAGE_NAME"
 	@echo "                  Default container name is awslacapa"
 	@echo "  run           Run Docker container DOCKER_IMAGE_NAME with port"

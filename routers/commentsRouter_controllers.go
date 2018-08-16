@@ -50,15 +50,15 @@ func init() {
 
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"],
 		beego.ControllerComments{
-			Method: "GetServerCerts",
-			Router: `/server_certificates`,
+			Method: "GetAll",
+			Router: `/users`,
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
 	beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"] = append(beego.GlobalControllerRouter["github.com/lenfree/awsLaCapa/controllers:IAMUsersController"],
 		beego.ControllerComments{
-			Method: "GetAll",
-			Router: `/users`,
+			Method: "GetServerCerts",
+			Router: `/server_certificates`,
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
