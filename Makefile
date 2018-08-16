@@ -11,6 +11,7 @@ all: release
 install:
 	go get -u github.com/smartystreets/goconvey
 	go get github.com/beego/bee
+	go get github.com/golang/dep/cmd/dep
 	go get -v
 
 .PHONY: script

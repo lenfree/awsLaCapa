@@ -62,6 +62,7 @@ runmode = prod
 autorender = false
 copyrequestbody = true
 EnableDocs = true
+awsRegion = ap-southeast-2
 EOF
 4. Copy API doco static directory(https://github.com/lenfree/awsLaCapa/tree/master/swagger) to same project directory
 ```
