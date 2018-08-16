@@ -2,6 +2,9 @@ awsLaCapa
 ==========
 
 Build Status: [![Build Status](https://travis-ci.org/lenfree/awsLaCapa.svg?branch=master)](https://travis-ci.org/lenfree/awsLaCapa)
+[![GitHub release](https://img.shields.io/github/release/lenfree/awsLaCapa.svg)](https://github.com/lenfree/awsLaCapa/releases/)
+[![All Contributors](https://img.shields.io/github/contributors/lenfree/awsLaCapa.svg?longCache=true&style=flat-square&colorB=orange&label=all%20contributors)](#contributors)
+[![Github All Releases](https://img.shields.io/github/downloads/lenfree/awsLaCapa/total.svg)]()
 
 As a AWS user, it takes a large amount of time to grab all AWS resources with
 logging into AWS console. Moreover, there are cli but they are use by resources
