@@ -11,7 +11,6 @@ all: release
 install:
 	go get -u github.com/smartystreets/goconvey
 	go get github.com/golang/dep/cmd/dep
-	go get -v
 
 .PHONY: script
 script: install
@@ -43,7 +42,7 @@ appstart:
 	bee run
 
 .PHONY: release
-release:
+release: install
 	mkdir -p release
 	GOOS=linux GOARCH=amd64 go build -o release/$(project_name)-linux-amd64 $(package)
 	GOOS=darwin GOARCH=amd64 go build -o release/$(project_name)-darwin-amd64 $(package)
