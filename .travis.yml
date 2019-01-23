@@ -1,18 +1,14 @@
 language: go
 go:
-  - "1.10"
+- '1.10'
 before_install:
-  - go get github.com/golang/dep/cmd/dep
+- go get github.com/golang/dep/cmd/dep
 install:
-  - dep ensure
+- dep ensure
 deploy:
   provider: releases
   api_key:
-    secure: zBRcLJMx1guvkewafLfwIxzMK8C8zw4oVG/peF3cj/GJKoLqTHg19RZqLlLSG2jVowTzAku9vR3oDB4eJ+pobHMCp2Uf0x0hzNXScy61TrdBUrH8oSGADae8Pk9BwHS0K6sRYeiiu8g3F1DNlcWoygNYezNGPVQoQnjxQf/PuNmDlss321/sVX+zXPdHxkR5pbMOi5L3isutzLmvISoW6o/8+1sNVp1Vn6EdRvuvWRcY6qd+tiEoqjVrFpzHjZFu6uMjivkztSZ3MPPa2TsdYJRnZjAb8CU/6P6na7qZPWLgeSbafoJuvY2o3ZWBVXjd+gs/ZARSitcDCyvQy/GbcfVWwYqkobTSelomAYxP7EUEl1h7sxUJwA12EYbRuyamligU9hcObWGC7xeecRGndLyZrwaza1JQgj0l0Hp1/hk9QULqzbWJFsRRiDYTLoXYJDIzaNckHfRjcWnP8T7aMNbCVyKnzLGHhRFk62h1weACZjbNn+PRkfElzW9qbQgs9QWNNapQ8GYQnjIS1U4yn/99/bhC6yvo57WODxDnWevvYuLRnPIsCkHfFqinX8gS2nlBwFBKCi9vku9nuPRNtMPMWKwT3SxusdpTLxoEZkw94BH6vW/Ony0ISl8pBVedSVY4h6IdiOpJjxBqRHPRkZIYvI08XoX77VijiFLht/Y=
-  file:
-    - release/awsLaCapa-linux-amd64
-    - release/awsLaCapa-darwin-amd64
-  skip_cleanup: true
+    secure: t0sfrvaXRdoSMa0pw+aiZHRYM/fG+2sdwYSb0KrsAHgJfbFTy0nuUHLrsSfZg1N5ARmScBqBD5Y5Fi0SX8rNtYQGpRpQnZfDODKxLVYGWTq8bL1XM+hhvAnUcIm/1guItQEveVwi4Z9C+LQOyTXjxEgQwKRgsSKQY/4Sk/L2z6fDKTYPuzGKIYK56/cqH2J1UFRPUWDKtxPW2gkST+y6HDQ1n+yEoFitYlu0BAadbaGjhf6Mqn6LZBkwgKKtJE0KE2XYqCT+baUsFmmBazq8baYlUDNwZZlYtCnIF3/VpZZBHjvuQMIJaNNn2+nsZuh2mtvOAsayR0wMPzFArTf3VMlOi4GN9Yb9eDYpV2f+BDdVijOLn+ZMvkVb5+It7tcxVaW0W3d6hUk6ssKsw+d7HMKhH3G9KlNCFQrgIDO3QzD9kt+mJ2HElglJSKM2aebC9a0W0jlYeryQUX0MGVkbijj0LnH/mbEsA5p6uHTnmuM6ucNERC0ba6IwKwtY3YnKzgZLmr+S6jltiz/d8OTP0mr9KVVtVrLEBJEHjC1i22W9N9sZKAZNnMurfYl+hjkA7Nv6smLkpy6XoB6ajDn/pXv0YW3L8uK4BvJ8UmJgYcbS398Mx+7PkegxOm9ivVoeRWKk8WPmrZCfxAb06VqeHTMle+TC7NletpbZKET2nZc=
+  file: asd
   on:
     repo: lenfree/awsLaCapa
-    tags: true
