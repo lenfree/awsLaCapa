@@ -1,14 +1,18 @@
 language: go
 go:
-- '1.10'
+  - "1.10"
 before_install:
-- go get github.com/golang/dep/cmd/dep
+  - go get github.com/golang/dep/cmd/dep
 install:
-- dep ensure
+  - dep ensure
 deploy:
   provider: releases
   api_key:
     secure: t0sfrvaXRdoSMa0pw+aiZHRYM/fG+2sdwYSb0KrsAHgJfbFTy0nuUHLrsSfZg1N5ARmScBqBD5Y5Fi0SX8rNtYQGpRpQnZfDODKxLVYGWTq8bL1XM+hhvAnUcIm/1guItQEveVwi4Z9C+LQOyTXjxEgQwKRgsSKQY/4Sk/L2z6fDKTYPuzGKIYK56/cqH2J1UFRPUWDKtxPW2gkST+y6HDQ1n+yEoFitYlu0BAadbaGjhf6Mqn6LZBkwgKKtJE0KE2XYqCT+baUsFmmBazq8baYlUDNwZZlYtCnIF3/VpZZBHjvuQMIJaNNn2+nsZuh2mtvOAsayR0wMPzFArTf3VMlOi4GN9Yb9eDYpV2f+BDdVijOLn+ZMvkVb5+It7tcxVaW0W3d6hUk6ssKsw+d7HMKhH3G9KlNCFQrgIDO3QzD9kt+mJ2HElglJSKM2aebC9a0W0jlYeryQUX0MGVkbijj0LnH/mbEsA5p6uHTnmuM6ucNERC0ba6IwKwtY3YnKzgZLmr+S6jltiz/d8OTP0mr9KVVtVrLEBJEHjC1i22W9N9sZKAZNnMurfYl+hjkA7Nv6smLkpy6XoB6ajDn/pXv0YW3L8uK4BvJ8UmJgYcbS398Mx+7PkegxOm9ivVoeRWKk8WPmrZCfxAb06VqeHTMle+TC7NletpbZKET2nZc=
-  file: asd
+  file:
+    - release/awsLaCapa-linux-amd64
+    - release/awsLaCapa-darwin-amd64
+  skip_cleanup: true
   on:
     repo: lenfree/awsLaCapa
+    tags: true
