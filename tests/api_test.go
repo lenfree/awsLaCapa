@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
-	"runtime"
 	"testing"
 
 	_ "github.com/lenfree/awsLaCapa/routers"
@@ -16,9 +15,14 @@ import (
 )
 
 func init() {
-	_, file, _, _ := runtime.Caller(1)
-	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".."+string(filepath.Separator))))
-	beego.TestBeegoInit(apppath)
+	// Thanks to https://github.com/beego/bee/pull/562/commits/0e342ff4c1cc19c31ed42c4ba4bd08a31615183e
+	// for a quickfix on path issue when runnign tests
+	//	_, file, _, _ := runtime.Caller(1)
+	//	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".."+string(filepath.Separator))))
+	//	beego.TestBeegoInit(apppath)
+	appPath, _ := filepath.Abs("..")
+	beego.TestBeegoInit(appPath)
+	beego.AppPath = appPath
 }
 
 func TestGetIAMUsers(t *testing.T) {
